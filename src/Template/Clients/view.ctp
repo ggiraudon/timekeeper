@@ -1,122 +1,338 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Client'), ['action' => 'edit', $client->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Client'), ['action' => 'delete', $client->id], ['confirm' => __('Are you sure you want to delete # {0}?', $client->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Clients'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Client'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Activities'), ['controller' => 'Activities', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Activity'), ['controller' => 'Activities', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Invoices'), ['controller' => 'Invoices', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Invoice'), ['controller' => 'Invoices', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="clients view large-9 medium-8 columns content">
-    <h3><?= h($client->name) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= h($client->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Name') ?></th>
-            <td><?= h($client->name) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Default Rate') ?></th>
-            <td><?= $this->Number->format($client->default_rate) ?></td>
-        </tr>
-    </table>
-    <div class="row">
-        <h4><?= __('Billing Address') ?></h4>
-        <?= $this->Text->autoParagraph(h($client->billing_address)); ?>
+<section class="content-header">
+  <h1>
+    <?php echo __('Client'); ?>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+    <?= $this->Html->link('<i class="fa fa-dashboard"></i> ' . __('Back'), ['action' => 'index'], ['escape' => false])?>
+    </li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <i class="fa fa-info"></i>
+                <h3 class="box-title"><?php echo __('Information'); ?></h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <dl class="dl-horizontal">
+                                                                                                                <dt><?= __('Id') ?></dt>
+                                        <dd>
+                                            <?= h($client->id) ?>
+                                        </dd>
+                                                                                                                                                            <dt><?= __('Name') ?></dt>
+                                        <dd>
+                                            <?= h($client->name) ?>
+                                        </dd>
+                                                                                                                                                            <dt><?= __('Currency') ?></dt>
+                                        <dd>
+                                            <?= h($client->currency) ?>
+                                        </dd>
+                                                                                                                                    
+                                            
+                                                                                                        <dt><?= __('Default Rate') ?></dt>
+                                <dd>
+                                    <?= $this->Number->format($client->default_rate) ?>
+                                </dd>
+                                                                                                
+                                            
+                                            
+                                                                        <dt><?= __('Billing Address') ?></dt>
+                            <dd>
+                            <?= $this->Text->autoParagraph(h($client->billing_address)); ?>
+                            </dd>
+                                                            </dl>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
     </div>
-    <div class="related">
-        <h4><?= __('Related Activities') ?></h4>
-        <?php if (!empty($client->activities)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('User Id') ?></th>
-                <th scope="col"><?= __('Client Id') ?></th>
-                <th scope="col"><?= __('Project Id') ?></th>
-                <th scope="col"><?= __('Billable Time') ?></th>
-                <th scope="col"><?= __('Notes') ?></th>
-                <th scope="col"><?= __('When') ?></th>
-                <th scope="col"><?= __('Invoice Id') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($client->activities as $activities): ?>
-            <tr>
-                <td><?= h($activities->id) ?></td>
-                <td><?= h($activities->user_id) ?></td>
-                <td><?= h($activities->client_id) ?></td>
-                <td><?= h($activities->project_id) ?></td>
-                <td><?= h($activities->billable_time) ?></td>
-                <td><?= h($activities->notes) ?></td>
-                <td><?= h($activities->when) ?></td>
-                <td><?= h($activities->invoice_id) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Activities', 'action' => 'view', $activities->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Activities', 'action' => 'edit', $activities->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Activities', 'action' => 'delete', $activities->id], ['confirm' => __('Are you sure you want to delete # {0}?', $activities->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    </div>
-    <div class="related">
-        <h4><?= __('Related Invoices') ?></h4>
-        <?php if (!empty($client->invoices)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('Client Id') ?></th>
-                <th scope="col"><?= __('Date Time') ?></th>
-                <th scope="col"><?= __('Discount') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($client->invoices as $invoices): ?>
-            <tr>
-                <td><?= h($invoices->id) ?></td>
-                <td><?= h($invoices->client_id) ?></td>
-                <td><?= h($invoices->date_time) ?></td>
-                <td><?= h($invoices->discount) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Invoices', 'action' => 'view', $invoices->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Invoices', 'action' => 'edit', $invoices->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Invoices', 'action' => 'delete', $invoices->id], ['confirm' => __('Are you sure you want to delete # {0}?', $invoices->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    </div>
-    <div class="related">
-        <h4><?= __('Related Projects') ?></h4>
-        <?php if (!empty($client->projects)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Name') ?></th>
-                <th scope="col"><?= __('Rate') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($client->projects as $projects): ?>
-            <tr>
-              
-                <td><?= h($projects->name) ?></td>
-                <td><?= h($projects->rate) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Projects', 'action' => 'view', $projects->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Projects', 'action' => 'edit', $projects->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Projects', 'action' => 'delete', $projects->id], ['confirm' => __('Are you sure you want to delete # {0}?', $projects->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    </div>
+    <!-- ./col -->
 </div>
+<!-- div -->
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <i class="fa fa-share-alt"></i>
+                    <h3 class="box-title"><?= __('Related {0}', ['Activities']) ?></h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+
+                <?php if (!empty($client->activities)): ?>
+
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                                                    
+                                    <th>
+                                    Id
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    User Id
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Client Id
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Project Id
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Billable Time
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Notes
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    When
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Invoice Id
+                                    </th>
+                                        
+                                                                    
+                                <th>
+                                    <?php echo __('Actions'); ?>
+                                </th>
+                            </tr>
+
+                            <?php foreach ($client->activities as $activities): ?>
+                                <tr>
+                                                                        
+                                    <td>
+                                    <?= h($activities->id) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($activities->user_id) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($activities->client_id) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($activities->project_id) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($activities->billable_time) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($activities->notes) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($activities->when) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($activities->invoice_id) ?>
+                                    </td>
+                                    
+                                                                        <td class="actions">
+                                    <?= $this->Html->link(__('View'), ['controller' => 'Activities', 'action' => 'view', $activities->id], ['class'=>'btn btn-info btn-xs']) ?>
+
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'Activities', 'action' => 'edit', $activities->id], ['class'=>'btn btn-warning btn-xs']) ?>
+
+                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Activities', 'action' => 'delete', $activities->id], ['confirm' => __('Are you sure you want to delete # {0}?', $activities->id), 'class'=>'btn btn-danger btn-xs']) ?>    
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                                    
+                        </tbody>
+                    </table>
+
+                <?php endif; ?>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <i class="fa fa-share-alt"></i>
+                    <h3 class="box-title"><?= __('Related {0}', ['Invoices']) ?></h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+
+                <?php if (!empty($client->invoices)): ?>
+
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                                                    
+                                    <th>
+                                    Id
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Client Id
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Date Time
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Discount
+                                    </th>
+                                        
+                                                                    
+                                <th>
+                                    <?php echo __('Actions'); ?>
+                                </th>
+                            </tr>
+
+                            <?php foreach ($client->invoices as $invoices): ?>
+                                <tr>
+                                                                        
+                                    <td>
+                                    <?= h($invoices->id) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($invoices->client_id) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($invoices->date_time) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($invoices->discount) ?>
+                                    </td>
+                                    
+                                                                        <td class="actions">
+                                    <?= $this->Html->link(__('View'), ['controller' => 'Invoices', 'action' => 'view', $invoices->id], ['class'=>'btn btn-info btn-xs']) ?>
+
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'Invoices', 'action' => 'edit', $invoices->id], ['class'=>'btn btn-warning btn-xs']) ?>
+
+                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Invoices', 'action' => 'delete', $invoices->id], ['confirm' => __('Are you sure you want to delete # {0}?', $invoices->id), 'class'=>'btn btn-danger btn-xs']) ?>    
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                                    
+                        </tbody>
+                    </table>
+
+                <?php endif; ?>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <i class="fa fa-share-alt"></i>
+                    <h3 class="box-title"><?= __('Related {0}', ['Projects']) ?></h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+
+                <?php if (!empty($client->projects)): ?>
+
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                                                    
+                                    <th>
+                                    Id
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Client Id
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Name
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Rate
+                                    </th>
+                                        
+                                                                    
+                                <th>
+                                    <?php echo __('Actions'); ?>
+                                </th>
+                            </tr>
+
+                            <?php foreach ($client->projects as $projects): ?>
+                                <tr>
+                                                                        
+                                    <td>
+                                    <?= h($projects->id) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($projects->client_id) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($projects->name) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($projects->rate) ?>
+                                    </td>
+                                    
+                                                                        <td class="actions">
+                                    <?= $this->Html->link(__('View'), ['controller' => 'Projects', 'action' => 'view', $projects->id], ['class'=>'btn btn-info btn-xs']) ?>
+
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'Projects', 'action' => 'edit', $projects->id], ['class'=>'btn btn-warning btn-xs']) ?>
+
+                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Projects', 'action' => 'delete', $projects->id], ['confirm' => __('Are you sure you want to delete # {0}?', $projects->id), 'class'=>'btn btn-danger btn-xs']) ?>    
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                                    
+                        </tbody>
+                    </table>
+
+                <?php endif; ?>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+</section>

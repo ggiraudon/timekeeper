@@ -17,13 +17,12 @@
     <fieldset>
         <legend><?= __('Add Activity') ?></legend>
         <?php
-            echo $this->Form->input('user_id', ['options' => $users]);
+            echo $this->Form->hidden('user_id', ['value' => $user_id]);
             echo $this->Form->input('client_id', ['options' => $clients]);
             echo $this->Form->input('project_id', ['options' => $projects, 'empty' => true]);
             echo $this->Form->input('billable_time');
             echo $this->Form->input('notes');
             echo $this->Form->input('when');
-            echo $this->Form->input('invoice_id', ['options' => $invoices, 'empty' => true]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

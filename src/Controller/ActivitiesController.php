@@ -61,12 +61,15 @@ class ActivitiesController extends AppController
             } else {
                 $this->Flash->error(__('The activity could not be saved. Please, try again.'));
             }
-        }
-        $users = $this->Activities->Users->find('list', ['limit' => 200]);
+        } 
+
+
+        $user_id =  $this->Auth->user('id');
+        
         $clients = $this->Activities->Clients->find('list', ['limit' => 200]);
         $projects = $this->Activities->Projects->find('list', ['limit' => 200]);
         $invoices = $this->Activities->Invoices->find('list', ['limit' => 200]);
-        $this->set(compact('activity', 'users', 'clients', 'projects', 'invoices'));
+        $this->set(compact('activity', 'user_id', 'clients', 'projects', 'invoices'));
         $this->set('_serialize', ['activity']);
     }
 
