@@ -240,3 +240,5 @@ Configure::write('Theme', [
 Plugin::load('Crud');
 
 Plugin::load('ADmad/JwtAuth');
+
+Plugin::load('CakePdf', ['bootstrap' => true]);

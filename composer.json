@@ -12,7 +12,8 @@
         "cakephp/plugin-installer": "*",
         "maiconpinto/cakephp-adminlte-theme": "^1.0",
         "friendsofcake/crud": "~4.0",
-        "admad/cakephp-jwt-auth": "^2.0"
+        "admad/cakephp-jwt-auth": "^2.0",
+        "friendsofcake/cakepdf": "^3.2"
     },
     "require-dev": {
         "psy/psysh": "@stable",
