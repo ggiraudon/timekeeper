@@ -80,5 +80,6 @@ class AppController extends Controller
             $this->set('_serialize', true);
         }
         $this->set('theme', Configure::read('Theme'));
+	$this->set('_user', $this->request->Session()->read('Auth'));
     }
 }

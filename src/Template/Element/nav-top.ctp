@@ -104,40 +104,16 @@ if (file_exists($file)) {
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <?php echo $this->Html->image('user2-160x160.jpg', array('class' => 'user-image', 'alt' => 'User Image')); ?>
-                    <span class="hidden-xs">Alexander Pierce</span>
+                    <span class="hidden-xs"><?= $_user['User']['firstname']?> <?= $_user['User']['lastname']?></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <!-- User image -->
-                    <li class="user-header">
-                        <?php echo $this->Html->image('user2-160x160.jpg', array('class' => 'img-circle', 'alt' => 'User Image')); ?>
-
-                        <p>
-                            Alexander Pierce - Web Developer
-                            <small>Member since Nov. 2012</small>
-                        </p>
-                    </li>
-                    <!-- Menu Body -->
-                    <li class="user-body">
-                        <div class="row">
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Followers</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Sales</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Friends</a>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                    </li>
-                    <!-- Menu Footer-->
+                  <!-- Menu Footer-->
                     <li class="user-footer">
                         <div class="pull-left">
                             <a href="#" class="btn btn-default btn-flat">Profile</a>
                         </div>
                         <div class="pull-right">
-                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                            <a href="/users/logout" class="btn btn-default btn-flat">Sign out</a>
                         </div>
                     </li>
                 </ul>

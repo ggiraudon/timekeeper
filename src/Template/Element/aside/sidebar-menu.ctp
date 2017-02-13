@@ -8,6 +8,48 @@ if (file_exists($file)) {
 } else {
 ?>
 <ul class="sidebar-menu">
+
+    <li class="header">MAIN NAVIGATION</li>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Clients</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="<?php echo $this->Url->build('/clients'); ?>"><i class="fa fa-circle-o"></i>List</a></li>
+            <li><a href="<?php echo $this->Url->build('/clients/add'); ?>"><i class="fa fa-circle-o"></i>New</a></li>
+        </ul>
+    </li>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Projects</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="<?php echo $this->Url->build('/projects'); ?>"><i class="fa fa-circle-o"></i>List</a></li>
+            <li><a href="<?php echo $this->Url->build('/projects/add'); ?>"><i class="fa fa-circle-o"></i>New</a></li>
+        </ul>
+    </li>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Activities</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="<?php echo $this->Url->build('/activities'); ?>"><i class="fa fa-circle-o"></i>List</a></li>
+            <li><a href="<?php echo $this->Url->build('/activities/add'); ?>"><i class="fa fa-circle-o"></i>New</a></li>
+        </ul>
+    </li>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Invoices</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="<?php echo $this->Url->build('/invoices'); ?>"><i class="fa fa-circle-o"></i>List</a></li>
+            <li><a href="<?php echo $this->Url->build('/invoices/add'); ?>"><i class="fa fa-circle-o"></i>New</a></li>
+        </ul>
+    </li>
+
+
+
+
     <li class="header">MAIN NAVIGATION</li>
     <li class="treeview">
         <a href="#">
