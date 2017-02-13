@@ -31,7 +31,6 @@
             echo $this->Form->input('billable_time');
             echo $this->Form->input('notes');
             echo $this->Form->input('date_time');
-<<<<<<< HEAD
           ?>
           </div>
           <!-- /.box-body -->
@@ -43,10 +42,4 @@
     </div>
   </div>
 </section>
-=======
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
->>>>>>> 0e4a2cbbee106e87c2d7d06a14ba25f49ff9e534
+
