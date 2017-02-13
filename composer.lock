@@ -4,8 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c6d78cc5249c5a6464990b618ae59555",
+    "hash": "64943e042e05cf84b76eec31156cba96",
+    "content-hash": "ff79975b4ac04ed0fb0864b3b4a552d8",
     "packages": [
+        {
+            "name": "admad/cakephp-jwt-auth",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ADmad/cakephp-jwt-auth.git",
+                "reference": "5d26893ee622a82069263182bdd7ecca99860d75"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ADmad/cakephp-jwt-auth/zipball/5d26893ee622a82069263182bdd7ecca99860d75",
+                "reference": "5d26893ee622a82069263182bdd7ecca99860d75",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "~3.1",
+                "firebase/php-jwt": "~4.0"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "ADmad\\JwtAuth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ADmad",
+                    "homepage": "https://github.com/ADmad",
+                    "role": "Author"
+                }
+            ],
+            "description": "CakePHP plugin for authenticating using JSON Web Tokens",
+            "homepage": "http://github.com/ADmad/cakephp-jwt-auth",
+            "keywords": [
+                "Authentication",
+                "authenticate",
+                "cakephp",
+                "jwt"
+            ],
+            "time": "2017-01-07 14:19:19"
+        },
         {
             "name": "aura/installer-default",
             "version": "1.0.0",
@@ -45,7 +91,7 @@
                 "aura",
                 "installer"
             ],
-            "time": "2012-11-26T21:35:57+00:00"
+            "time": "2012-11-26 21:35:57"
         },
         {
             "name": "aura/intl",
@@ -123,7 +169,7 @@
                 "l10n",
                 "localization"
             ],
-            "time": "2014-08-24T00:00:00+00:00"
+            "time": "2014-08-24 00:00:00"
         },
         {
             "name": "cakephp/cakephp",
@@ -197,7 +243,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2017-01-14T02:44:01+00:00"
+            "time": "2017-01-14 02:44:01"
         },
         {
             "name": "cakephp/chronos",
@@ -252,7 +298,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2017-01-09T02:11:45+00:00"
+            "time": "2017-01-09 02:11:45"
         },
         {
             "name": "cakephp/migrations",
@@ -302,7 +348,7 @@
                 "cakephp",
                 "migrations"
             ],
-            "time": "2017-01-07T16:45:31+00:00"
+            "time": "2017-01-07 16:45:31"
         },
         {
             "name": "cakephp/plugin-installer",
@@ -342,7 +388,124 @@
                 }
             ],
             "description": "A composer installer for CakePHP 3.0+ plugins.",
-            "time": "2016-04-28T03:01:34+00:00"
+            "time": "2016-04-28 03:01:34"
+        },
+        {
+            "name": "firebase/php-jwt",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Firebase\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "time": "2016-07-18 04:51:16"
+        },
+        {
+            "name": "friendsofcake/crud",
+            "version": "4.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfCake/crud.git",
+                "reference": "038cb86b3cb33eb61a21b2f5ebe67c3d41faa280"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfCake/crud/zipball/038cb86b3cb33eb61a21b2f5ebe67c3d41faa280",
+                "reference": "038cb86b3cb33eb61a21b2f5ebe67c3d41faa280",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "^3.2.2"
+            },
+            "require-dev": {
+                "friendsofcake/cakephp-test-utilities": "dev-master",
+                "friendsofcake/search": "dev-master",
+                "phpunit/phpunit": "*"
+            },
+            "suggest": {
+                "friendsofcake/crud-view": "Automated admin backend based on your Crud configuration.",
+                "friendsofcake/search": "Provides search capabilities for the Crud plugin."
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Crud\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Winther",
+                    "homepage": "http://cakephp.nu/",
+                    "role": "Author"
+                },
+                {
+                    "name": "José Lorenzo Rodríguez",
+                    "homepage": "https://github.com/lorenzo",
+                    "role": "Contributor"
+                },
+                {
+                    "name": "Andy Dawson",
+                    "homepage": "https://github.com/ad7six",
+                    "role": "Contributor"
+                },
+                {
+                    "name": "ADmad",
+                    "homepage": "https://github.com/admad",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "CakePHP Application development on steroids - rapid prototyping / scaffolding & production ready code - XML / JSON APIs and more",
+            "homepage": "https://github.com/FriendsOfCake/crud",
+            "keywords": [
+                "bake",
+                "cake",
+                "cakephp",
+                "create",
+                "crud",
+                "delete",
+                "retrieve",
+                "scaffold",
+                "scaffolding",
+                "update"
+            ],
+            "time": "2016-08-27 12:26:00"
         },
         {
             "name": "maiconpinto/cakephp-adminlte-theme",
@@ -390,7 +553,7 @@
                 "plugin",
                 "templates"
             ],
-            "time": "2016-10-26T16:42:45+00:00"
+            "time": "2016-10-26 16:42:45"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -444,7 +607,7 @@
                 "mobile detector",
                 "php mobile detect"
             ],
-            "time": "2016-11-11T14:56:25+00:00"
+            "time": "2016-11-11 14:56:25"
         },
         {
             "name": "psr/http-message",
@@ -494,7 +657,7 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06T14:39:51+00:00"
+            "time": "2016-08-06 14:39:51"
         },
         {
             "name": "psr/log",
@@ -541,7 +704,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "robmorgan/phinx",
@@ -607,7 +770,7 @@
                 "migrations",
                 "phinx"
             ],
-            "time": "2016-10-27T10:16:12+00:00"
+            "time": "2016-10-27 10:16:12"
         },
         {
             "name": "symfony/config",
@@ -663,7 +826,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-02T20:32:22+00:00"
+            "time": "2017-01-02 20:32:22"
         },
         {
             "name": "symfony/console",
@@ -726,7 +889,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-08T20:47:33+00:00"
+            "time": "2017-01-08 20:47:33"
         },
         {
             "name": "symfony/debug",
@@ -783,7 +946,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-02T20:32:22+00:00"
+            "time": "2017-01-02 20:32:22"
         },
         {
             "name": "symfony/filesystem",
@@ -832,7 +995,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-08T20:47:33+00:00"
+            "time": "2017-01-08 20:47:33"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -891,7 +1054,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2016-11-14 01:06:16"
         },
         {
             "name": "symfony/yaml",
@@ -946,7 +1109,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-03T13:51:32+00:00"
+            "time": "2017-01-03 13:51:32"
         },
         {
             "name": "zendframework/zend-diactoros",
@@ -996,7 +1159,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2017-01-17T16:18:33+00:00"
+            "time": "2017-01-17 16:18:33"
         }
     ],
     "packages-dev": [
@@ -1045,7 +1208,7 @@
                 "bake",
                 "cakephp"
             ],
-            "time": "2017-01-04T07:52:22+00:00"
+            "time": "2017-01-04 07:52:22"
         },
         {
             "name": "cakephp/debug_kit",
@@ -1102,7 +1265,7 @@
                 "debug",
                 "kit"
             ],
-            "time": "2017-01-15T10:13:07+00:00"
+            "time": "2017-01-15 10:13:07"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1135,7 +1298,7 @@
                 "MIT"
             ],
             "description": "implementation of xdg base directory specification for php",
-            "time": "2014-10-24T07:27:01+00:00"
+            "time": "2014-10-24 07:27:01"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1178,7 +1341,7 @@
                     "homepage": "http://www.acci.cz"
                 }
             ],
-            "time": "2014-04-08T15:00:19+00:00"
+            "time": "2014-04-08 15:00:19"
         },
         {
             "name": "jakub-onderka/php-console-highlighter",
@@ -1222,7 +1385,7 @@
                     "homepage": "http://www.acci.cz/"
                 }
             ],
-            "time": "2015-04-20T18:58:01+00:00"
+            "time": "2015-04-20 18:58:01"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -1272,7 +1435,7 @@
                 "highlight",
                 "sql"
             ],
-            "time": "2014-01-12T16:20:24+00:00"
+            "time": "2014-01-12 16:20:24"
         },
         {
             "name": "nikic/php-parser",
@@ -1323,7 +1486,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2016-12-06T11:30:35+00:00"
+            "time": "2016-12-06 11:30:35"
         },
         {
             "name": "psy/psysh",
@@ -1396,7 +1559,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-01-15T17:54:13+00:00"
+            "time": "2017-01-15 17:54:13"
         },
         {
             "name": "symfony/var-dumper",
@@ -1459,7 +1622,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2017-01-03T08:53:57+00:00"
+            "time": "2017-01-03 08:53:57"
         }
     ],
     "aliases": [],

@@ -237,3 +237,6 @@ Configure::write('Theme', [
     ],
     'folder'=>''
 ]);
+Plugin::load('Crud');
+
+Plugin::load('ADmad/JwtAuth');
