@@ -22,7 +22,7 @@
             echo $this->Form->input('project_id', ['options' => $projects, 'empty' => true]);
             echo $this->Form->input('billable_time');
             echo $this->Form->input('notes');
-            echo $this->Form->input('when');
+            echo $this->Form->input('date_time');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
