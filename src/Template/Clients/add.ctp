@@ -28,6 +28,8 @@
             echo $this->Form->input('name');
             echo $this->Form->input('billing_address');
             echo $this->Form->input('default_rate');
+            echo $this->Form->input('phone');
+            echo $this->Form->input('email');
             echo $this->Form->input('currency');
           ?>
           </div>

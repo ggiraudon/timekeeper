@@ -25,9 +25,11 @@
         <?= $this->Form->create($client, array('role' => 'form')) ?>
           <div class="box-body">
           <?php
-            echo $this->Form->input('name');
+             echo $this->Form->input('name');
             echo $this->Form->input('billing_address');
             echo $this->Form->input('default_rate');
+            echo $this->Form->input('phone');
+            echo $this->Form->input('email');
             echo $this->Form->input('currency');
           ?>
           </div>

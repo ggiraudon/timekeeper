@@ -28,7 +28,7 @@
         <div class="box-body table-responsive no-padding">
           <table class="table table-hover">
             <tr>
-              <th><?= $this->Paginator->sort('id') ?></th>
+              <!--<th><?= $this->Paginator->sort('id') ?></th>-->
               <th><?= $this->Paginator->sort('name') ?></th>
               <th><?= $this->Paginator->sort('default_rate') ?></th>
               <th><?= $this->Paginator->sort('currency') ?></th>
@@ -36,7 +36,9 @@
             </tr>
             <?php foreach ($clients as $client): ?>
               <tr>
-                <td><?= h($client->id) ?></td>
+                <!-- <td>
+                  <?= h($client->id) ?></td> 
+                -->
                 <td><?= h($client->name) ?></td>
                 <td><?= $this->Number->format($client->default_rate) ?></td>
                 <td><?= h($client->currency) ?></td>
