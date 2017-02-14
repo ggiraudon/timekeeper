@@ -1,23 +1,41 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Invoices'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Activities'), ['controller' => 'Activities', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Activity'), ['controller' => 'Activities', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="invoices form large-9 medium-8 columns content">
-    <?= $this->Form->create($invoice) ?>
-    <fieldset>
-        <legend><?= __('Add Invoice') ?></legend>
-        <?php
+<section class="content-header">
+  <h1>
+    Invoice
+    <small><?= __('Add') ?></small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+    <?= $this->Html->link('<i class="fa fa-dashboard"></i> '.__('Back'), ['action' => 'index'], ['escape' => false]) ?>
+    </li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title"><?= __('Form') ?></h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <?= $this->Form->create($invoice, array('role' => 'form')) ?>
+          <div class="box-body">
+          <?php
             echo $this->Form->input('client_id', ['options' => $clients]);
             echo $this->Form->input('date_time');
             echo $this->Form->input('discount');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
+          ?>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer">
+            <?= $this->Form->button(__('Save')) ?>
+          </div>
+        <?= $this->Form->end() ?>
+      </div>
+    </div>
+  </div>
+</section>

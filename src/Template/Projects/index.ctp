@@ -1,49 +1,63 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Project'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Activities'), ['controller' => 'Activities', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Activity'), ['controller' => 'Activities', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="projects index large-9 medium-8 columns content">
-    <h3><?= __('Projects') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Projects
+    <div class="pull-right"><?= $this->Html->link(__('New'), ['action' => 'add'], ['class'=>'btn btn-success btn-xs']) ?></div>
+  </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title"><?= __('List of') ?> Projects</h3>
+          <div class="box-tools">
+            <form action="<?php echo $this->Url->build(); ?>" method="POST">
+              <div class="input-group input-group-sm"  style="width: 180px;">
+                <input type="text" name="search" class="form-control" placeholder="<?= __('Fill in to start search') ?>">
+                <span class="input-group-btn">
+                <button class="btn btn-info btn-flat" type="submit"><?= __('Filter') ?></button>
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('client_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('rate') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+              <th><?= $this->Paginator->sort('id') ?></th>
+              <th><?= $this->Paginator->sort('client_id') ?></th>
+              <th><?= $this->Paginator->sort('name') ?></th>
+              <th><?= $this->Paginator->sort('rate') ?></th>
+              <th><?= __('Actions') ?></th>
             </tr>
-        </thead>
-        <tbody>
             <?php foreach ($projects as $project): ?>
-            <tr>
+              <tr>
                 <td><?= h($project->id) ?></td>
                 <td><?= $project->has('client') ? $this->Html->link($project->client->name, ['controller' => 'Clients', 'action' => 'view', $project->client->id]) : '' ?></td>
                 <td><?= h($project->name) ?></td>
                 <td><?= $this->Number->format($project->rate) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $project->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $project->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $project->id], ['confirm' => __('Are you sure you want to delete # {0}?', $project->id)]) ?>
+                <td class="actions" style="white-space:nowrap">
+                  <?= $this->Html->link(__('View'), ['action' => 'view', $project->id], ['class'=>'btn btn-info btn-xs']) ?>
+                  <?= $this->Html->link(__('Edit'), ['action' => 'edit', $project->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                  <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $project->id], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs']) ?>
                 </td>
-            </tr>
+              </tr>
             <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+          </table>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer clearfix">
+          <ul class="pagination pagination-sm no-margin pull-right">
+            <?php echo $this->Paginator->numbers(); ?>
+          </ul>
+        </div>
+      </div>
+      <!-- /.box -->
     </div>
-</div>
+  </div>
+</section>
+<!-- /.content -->

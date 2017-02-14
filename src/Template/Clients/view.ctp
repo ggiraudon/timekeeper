@@ -21,10 +21,8 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <dl class="dl-horizontal">
-                                                                                                                <dt><?= __('Id') ?></dt>
-                                        <dd>
-                                            <?= h($client->id) ?>
-                                        </dd>
+                                                                                                                
+                                        
                                                                                                                                                             <dt><?= __('Name') ?></dt>
                                         <dd>
                                             <?= h($client->name) ?>
@@ -72,26 +70,10 @@
                         <tbody>
                             <tr>
                                                                     
+                                   
                                     <th>
-                                    Id
-                                    </th>
-                                        
-                                                                    
-                                    <th>
-                                    User Id
-                                    </th>
-                                        
-                                                                    
-                                    <th>
-                                    Client Id
-                                    </th>
-                                        
-                                                                    
-                                    <th>
-                                    Project Id
-                                    </th>
-                                        
-                                                                    
+                                    When
+                                    </th>                          
                                     <th>
                                     Billable Time
                                     </th>
@@ -102,14 +84,10 @@
                                     </th>
                                         
                                                                     
-                                    <th>
-                                    When
-                                    </th>
+                                   
                                         
                                                                     
-                                    <th>
-                                    Invoice Id
-                                    </th>
+                                   
                                         
                                                                     
                                 <th>
@@ -118,24 +96,11 @@
                             </tr>
 
                             <?php foreach ($client->activities as $activities): ?>
-                                <tr>
-                                                                        
+                                <tr>  
                                     <td>
-                                    <?= h($activities->id) ?>
+                                    <?= h($activities->date_time) ?>
                                     </td>
-                                                                        
-                                    <td>
-                                    <?= h($activities->user_id) ?>
-                                    </td>
-                                                                        
-                                    <td>
-                                    <?= h($activities->client_id) ?>
-                                    </td>
-                                                                        
-                                    <td>
-                                    <?= h($activities->project_id) ?>
-                                    </td>
-                                                                        
+
                                     <td>
                                     <?= h($activities->billable_time) ?>
                                     </td>
@@ -143,14 +108,8 @@
                                     <td>
                                     <?= h($activities->notes) ?>
                                     </td>
-                                                                        
-                                    <td>
-                                    <?= h($activities->when) ?>
-                                    </td>
-                                                                        
-                                    <td>
-                                    <?= h($activities->invoice_id) ?>
-                                    </td>
+                                                    
+                                    
                                     
                                                                         <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'Activities', 'action' => 'view', $activities->id], ['class'=>'btn btn-info btn-xs']) ?>
@@ -270,14 +229,10 @@
                         <tbody>
                             <tr>
                                                                     
-                                    <th>
-                                    Id
-                                    </th>
+                                    
                                         
                                                                     
-                                    <th>
-                                    Client Id
-                                    </th>
+                                   
                                         
                                                                     
                                     <th>
@@ -298,13 +253,7 @@
                             <?php foreach ($client->projects as $projects): ?>
                                 <tr>
                                                                         
-                                    <td>
-                                    <?= h($projects->id) ?>
-                                    </td>
-                                                                        
-                                    <td>
-                                    <?= h($projects->client_id) ?>
-                                    </td>
+                
                                                                         
                                     <td>
                                     <?= h($projects->name) ?>
