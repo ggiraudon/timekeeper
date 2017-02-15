@@ -46,6 +46,9 @@ Router::defaultRouteClass(DashedRoute::class);
 Router::prefix('api', function ($routes) {
     $routes->extensions(['json', 'xml']);
     $routes->resources('Clients');
+    $routes->resources('Projects');
+    $routes->resources('Activities');
+    $routes->resources('Invoices');
     $routes->fallbacks('InflectedRoute');
 });
 

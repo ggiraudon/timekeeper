@@ -16,11 +16,12 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Crud.Crud', [
             'actions' => [
-                'Crud.Index',
+                'index' => ['className' => '\App\Crud\Action\IndexAction'],
                 'Crud.View',
                 'Crud.Add',
                 'Crud.Edit',
-                'Crud.Delete'
+                'Crud.Delete',
+                'list' => ['className' => '\App\Crud\Action\ListAction'],
             ],
             'listeners' => [
                 'Crud.Api',
@@ -29,7 +30,7 @@ class AppController extends Controller
             ]
         ]);
         $this->loadComponent('Auth', [
-            'storage' => 'Memory',
+//            'storage' => 'Memory',
             'authenticate' => [
                 'Form' => [
 	    	'scope' => ['Users.active' => 1]
