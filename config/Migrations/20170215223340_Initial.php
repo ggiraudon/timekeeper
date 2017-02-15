@@ -38,7 +38,7 @@ class Initial extends AbstractMigration
                 'limit' => 200,
                 'null' => false,
             ])
-            ->addColumn('when', 'datetime', [
+            ->addColumn('date_time', 'datetime', [
                 'default' => null,
                 'limit' => null,
                 'null' => false,
@@ -86,11 +86,26 @@ class Initial extends AbstractMigration
                 'limit' => null,
                 'null' => false,
             ])
+            ->addColumn('phone', 'string', [
+                'default' => null,
+                'limit' => 16,
+                'null' => false,
+            ])
+            ->addColumn('email', 'string', [
+                'default' => null,
+                'limit' => 100,
+                'null' => false,
+            ])
             ->addColumn('default_rate', 'decimal', [
                 'default' => null,
                 'null' => false,
                 'precision' => 8,
                 'scale' => 2,
+            ])
+            ->addColumn('currency', 'string', [
+                'default' => 'CAD',
+                'limit' => 3,
+                'null' => false,
             ])
             ->create();
 
@@ -186,6 +201,11 @@ class Initial extends AbstractMigration
             ->addColumn('lastname', 'string', [
                 'default' => null,
                 'limit' => 60,
+                'null' => false,
+            ])
+            ->addColumn('active', 'integer', [
+                'default' => '1',
+                'limit' => 4,
                 'null' => false,
             ])
             ->addColumn('created', 'datetime', [
