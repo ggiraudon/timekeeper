@@ -96,11 +96,6 @@
 
 
 
-
-
-
-
-
                   <th>
                     <?php echo __('Actions'); ?>
                   </th>
@@ -160,17 +155,7 @@
                 <tr>
 
                   <th>
-                    Id
-                  </th>
-
-
-                  <th>
-                    Client Id
-                  </th>
-
-
-                  <th>
-                    Date Time
+                    Date
                   </th>
 
 
@@ -187,16 +172,8 @@
                 <?php foreach ($client->invoices as $invoices): ?>
                   <tr>
 
-                    <td>
-                      <?= h($invoices->id) ?>
-                    </td>
-
-                    <td>
-                      <?= h($invoices->client_id) ?>
-                    </td>
-
-                    <td>
-                      <?= h($invoices->date_time) ?>
+                   <td>
+                      <?= h($invoices->invoice_date) ?>
                     </td>
 
                     <td>
@@ -239,11 +216,6 @@
             <table class="table table-hover">
               <tbody>
                 <tr>
-
-
-
-
-
 
 
                   <th>
