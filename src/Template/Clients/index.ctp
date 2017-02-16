@@ -13,32 +13,21 @@
       <div class="box">
         <div class="box-header">
           <h3 class="box-title"><?= __('List of') ?> Clients</h3>
-          <div class="box-tools">
-            <form action="<?php echo $this->Url->build(); ?>" method="POST">
-              <div class="input-group input-group-sm"  style="width: 180px;">
-                <input type="text" name="search" class="form-control" placeholder="<?= __('Fill in to start search') ?>">
-                <span class="input-group-btn">
-                <button class="btn btn-info btn-flat" type="submit"><?= __('Filter') ?></button>
-                </span>
-              </div>
-            </form>
-          </div>
         </div>
         <!-- /.box-header -->
-        <div class="box-body table-responsive no-padding">
-          <table class="table table-hover">
+        <div class="box-body">
+          <table id="clients-table" class="table table-hover">
+	    <thead>
             <tr>
-              <!--<th><?= $this->Paginator->sort('id') ?></th>-->
-              <th><?= $this->Paginator->sort('name') ?></th>
-              <th><?= $this->Paginator->sort('default_rate') ?></th>
-              <th><?= $this->Paginator->sort('currency') ?></th>
+              <th><?= __('Name') ?></th>
+              <th><?= __('Default Rate') ?></th>
+              <th><?= __('Currency') ?></th>
               <th><?= __('Actions') ?></th>
             </tr>
+	    </thead>
+	    <tbody>
             <?php foreach ($clients as $client): ?>
               <tr>
-                <!-- <td>
-                  <?= h($client->id) ?></td> 
-                -->
                 <td><?= h($client->name) ?></td>
                 <td><?= $this->Number->format($client->default_rate) ?></td>
                 <td><?= h($client->currency) ?></td>
@@ -49,13 +38,11 @@
                 </td>
               </tr>
             <?php endforeach; ?>
+	    </tbody>
           </table>
         </div>
         <!-- /.box-body -->
         <div class="box-footer clearfix">
-          <ul class="pagination pagination-sm no-margin pull-right">
-            <?php echo $this->Paginator->numbers(); ?>
-          </ul>
         </div>
       </div>
       <!-- /.box -->
@@ -63,3 +50,28 @@
   </div>
 </section>
 <!-- /.content -->
+<?php
+$this->Html->css([
+    'AdminLTE./plugins/datatables/dataTables.bootstrap',
+  ],
+  ['block' => 'css']);
+
+$this->Html->script([
+  'AdminLTE./plugins/datatables/jquery.dataTables.min',
+  'AdminLTE./plugins/datatables/dataTables.bootstrap.min',
+],
+['block' => 'script']);
+?>
+
+<script>
+  $(function () {
+    $('#clients-table').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true
+    });
+  });
+</script>

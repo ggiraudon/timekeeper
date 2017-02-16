@@ -73,34 +73,28 @@
           <h3 class="box-title"><?= __('Related {0}', ['Activities']) ?></h3>
         </div>
         <!-- /.box-header -->
-        <div class="box-body table-responsive no-padding">
+        <div class="box-body">
 
           <?php if (!empty($client->activities)): ?>
 
-            <table class="table table-hover">
-              <tbody>
+            <table id="activities-table" class="table table-bordered table-striped">
+		<thead>
                 <tr>
-
-
                   <th>
                     When
                   </th>
                   <th>
                     Billable Time
                   </th>
-
-
                   <th>
                     Notes
                   </th>
-
-
-
                   <th>
                     <?php echo __('Actions'); ?>
                   </th>
                 </tr>
-
+		</thead>
+              <tbody>
                 <?php foreach ($client->activities as $activities): ?>
                   <tr>
                     <td>
@@ -115,14 +109,10 @@
                       <?= h($activities->notes) ?>
                     </td>
 
-
-
                     <td class="actions">
                       <?= $this->Html->link(__('View'), ['controller' => 'Activities', 'action' => 'view', $activities->id], ['class'=>'btn btn-info btn-xs']) ?>
-
-                        <?= $this->Html->link(__('Edit'), ['controller' => 'Activities', 'action' => 'edit', $activities->id], ['class'=>'btn btn-warning btn-xs']) ?>
-
-                          <?= $this->Form->postLink(__('Delete'), ['controller' => 'Activities', 'action' => 'delete', $activities->id], ['confirm' => __('Are you sure you want to delete # {0}?', $activities->id), 'class'=>'btn btn-danger btn-xs']) ?>
+                      <?= $this->Html->link(__('Edit'), ['controller' => 'Activities', 'action' => 'edit', $activities->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                      <?= $this->Form->postLink(__('Delete'), ['controller' => 'Activities', 'action' => 'delete', $activities->id], ['confirm' => __('Are you sure you want to delete # {0}?', $activities->id), 'class'=>'btn btn-danger btn-xs']) ?>
                     </td>
                   </tr>
                   <?php endforeach; ?>
@@ -268,3 +258,30 @@
     </div>
   </div>
 </section>
+<?php
+$this->Html->css([
+    'AdminLTE./plugins/datatables/dataTables.bootstrap',
+  ],
+  ['block' => 'css']);
+
+$this->Html->script([
+  'AdminLTE./plugins/datatables/jquery.dataTables.min',
+  'AdminLTE./plugins/datatables/dataTables.bootstrap.min',
+],
+['block' => 'script']);
+?>
+
+<?php $this->start('scriptBotton'); ?>
+<script>
+  $(function () {
+    $('#activities-table').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true
+    });
+  });
+</script>
+<?php $this->end(); ?>

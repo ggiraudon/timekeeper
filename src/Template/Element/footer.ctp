@@ -11,7 +11,7 @@ if (file_exists($file)) {
     <div class="pull-right hidden-xs">
         <b>Version</b> 2.3.2
     </div>
-    <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>TimeKEEPER</strong> - All rights
     reserved.
 </footer>
 <?php } ?>
