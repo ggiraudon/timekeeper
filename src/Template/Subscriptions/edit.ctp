@@ -1,7 +1,12 @@
+<?php
+/**
+  * @var \App\View\AppView $this
+  */
+?>
 <section class="content-header">
   <h1>
-    Client
-    <small><?= __('Add') ?></small>
+    Subscription
+    <small><?= __('Edit') ?></small>
   </h1>
   <ol class="breadcrumb">
     <li>
@@ -22,16 +27,21 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <?= $this->Form->create($client, array('role' => 'form')) ?>
+        <?= $this->Form->create($subscription, array('role' => 'form')) ?>
           <div class="box-body">
           <?php
-            echo $this->Form->hidden('company_id',array('value'=>$company_id));
+            echo $this->Form->input('company_id', ['options' => $companies]);
+            echo $this->Form->input('client_id', ['options' => $clients]);
             echo $this->Form->input('name');
-            echo $this->Form->input('billing_address');
-            echo $this->Form->input('default_rate');
-            echo $this->Form->input('phone');
-            echo $this->Form->input('email');
+            echo $this->Form->input('amount');
             echo $this->Form->input('currency');
+            echo $this->Form->input('interval');
+            echo $this->Form->input('interval_count');
+            echo $this->Form->input('status');
+            echo $this->Form->input('payment_type');
+            echo $this->Form->input('stripe_plan_id');
+            echo $this->Form->input('stripe_subscription_id');
+            echo $this->Form->input('paypal_subscription_id');
           ?>
           </div>
           <!-- /.box-body -->

@@ -39,10 +39,16 @@ class InvoicesController extends AppController
         $invoice = $this->Invoices->get($id, [
             'contain' => ['Clients', 'Activities']
         ]);
-
+	$company = $this->Auth->user('company');
         $this->set('invoice', $invoice);
-        $this->set('_serialize', ['invoice']);
+        $this->set('company', $company);
+        $this->set('_serialize', ['invoice','company']);
     }
+    public function printview($id = null)
+    {
+	$this->view($id);
+    }
+
 
     /**
      * Add method

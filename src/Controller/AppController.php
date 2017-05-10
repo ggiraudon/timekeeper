@@ -47,16 +47,22 @@ class AppController extends Controller
         $this->loadComponent('Flash');
 
         $this->loadComponent('Auth', [
-            'loginRedirect' => [
-                'controller' => 'clients',
-                'action' => 'index'
-            ],
-            'logoutRedirect' => [
-                'controller' => 'users',
-                'action' => 'login'
-            ]
+		'authenticate' => [
+			'Form' => [
+				'contain' => ['Companies']
+			]
+		],
+		'loginRedirect' => [
+			'controller' => 'clients',
+			'action' => 'index'
+		],
+		'logoutRedirect' => [
+			'controller' => 'users',
+			'action' => 'login'
+		]
         ]);
 
+        $this->loadComponent('CakephpStripe.Stripe');
         /*
          * Enable the following components for recommended CakePHP security settings.
          * see http://book.cakephp.org/3.0/en/controllers/components/security.html

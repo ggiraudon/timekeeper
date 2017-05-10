@@ -11,6 +11,7 @@
     <fieldset>
         <legend><?= __('Add User') ?></legend>
         <?php
+            echo $this->Form->input('company_id', ['options' => $companies]);
             echo $this->Form->input('username');
             echo $this->Form->input('password');
             echo $this->Form->input('email');

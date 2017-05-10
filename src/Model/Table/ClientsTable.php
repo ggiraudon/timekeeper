@@ -47,6 +47,12 @@ class ClientsTable extends Table
         $this->hasMany('Projects', [
             'foreignKey' => 'client_id'
         ]);
+        $this->belongsTo('Companies', [
+            'foreignKey' => 'company_id',
+            'joinType' => 'INNER'
+        ]);
+
+
     }
 
     /**

@@ -1,172 +1,36 @@
-<section class="content-header">
-  <h1>
-    <?php echo __('Invoice'); ?>
-  </h1>
-  <ol class="breadcrumb">
-    <li>
-    <?= $this->Html->link('<i class="fa fa-dashboard"></i> ' . __('Back'), ['action' => 'index'], ['escape' => false])?>
-    </li>
-  </ol>
-</section>
+    <section class="content-header">
+      <h1>
+        Invoice
+        <small><?= $invoice['label']?></small>
+      </h1>
+      <ol class="breadcrumb">
+    	<?= $this->Html->link('<i class="fa fa-dashboard"></i> ' . __('Back'), ['action' => 'index'], ['escape' => false])?>
+      </ol>
+    </section>
 
-<!-- Main content -->
-<section class="content">
-<div class="row">
-    <div class="col-md-12">
-        <div class="box box-solid">
-            <div class="box-header with-border">
-                <i class="fa fa-info"></i>
-                <h3 class="box-title"><?php echo __('Information'); ?></h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <dl class="dl-horizontal">
-                                                                                                                <dt><?= __('Id') ?></dt>
-                                        <dd>
-                                            <?= h($invoice->id) ?>
-                                        </dd>
-                                                                                                                                                    <dt><?= __('Client') ?></dt>
-                                <dd>
-                                    <?= $invoice->has('client') ? $invoice->client->name : '' ?>
-                                </dd>
-                                                                                                
-                                            
-                                                                                                        <dt><?= __('Discount') ?></dt>
-                                <dd>
-                                    <?= $this->Number->format($invoice->discount) ?>
-                                </dd>
-                                                                                                
-                                                                                                        <dt><?= __('Date Time') ?></dt>
-                                <dd>
-                                    <?= h($invoice->date_time) ?>
-                                </dd>
-                                                                                                    
-                                            
-                                    </dl>
-            </div>
-            <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
+
+<!-- Content Header (Page header) -->
+    <div class="pad margin no-print">
+      <div class="callout callout-info" style="margin-bottom: 0!important;">
+        <h4><i class="fa fa-info"></i> Note:</h4>
+        This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
+      </div>
     </div>
-    <!-- ./col -->
-</div>
-<!-- div -->
 
-    <div class="row">
+    <?php echo $this->element('invoice-content'); ?>
+
+      <!-- this row will not appear when printing -->
+      <div class="row no-print">
         <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
-                    <i class="fa fa-share-alt"></i>
-                    <h3 class="box-title"><?= __('Related {0}', ['Activities']) ?></h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-
-                <?php if (!empty($invoice->activities)): ?>
-
-                    <table class="table table-hover">
-                        <tbody>
-                            <tr>
-                                                                    
-                                    <th>
-                                    Id
-                                    </th>
-                                        
-                                                                    
-                                    <th>
-                                    User Id
-                                    </th>
-                                        
-                                                                    
-                                    <th>
-                                    Client Id
-                                    </th>
-                                        
-                                                                    
-                                    <th>
-                                    Project Id
-                                    </th>
-                                        
-                                                                    
-                                    <th>
-                                    Billable Time
-                                    </th>
-                                        
-                                                                    
-                                    <th>
-                                    Notes
-                                    </th>
-                                        
-                                                                    
-                                    <th>
-                                    When
-                                    </th>
-                                        
-                                                                    
-                                    <th>
-                                    Invoice Id
-                                    </th>
-                                        
-                                                                    
-                                <th>
-                                    <?php echo __('Actions'); ?>
-                                </th>
-                            </tr>
-
-                            <?php foreach ($invoice->activities as $activities): ?>
-                                <tr>
-                                                                        
-                                    <td>
-                                    <?= h($activities->id) ?>
-                                    </td>
-                                                                        
-                                    <td>
-                                    <?= h($activities->user_id) ?>
-                                    </td>
-                                                                        
-                                    <td>
-                                    <?= h($activities->client_id) ?>
-                                    </td>
-                                                                        
-                                    <td>
-                                    <?= h($activities->project_id) ?>
-                                    </td>
-                                                                        
-                                    <td>
-                                    <?= h($activities->billable_time) ?>
-                                    </td>
-                                                                        
-                                    <td>
-                                    <?= h($activities->notes) ?>
-                                    </td>
-                                                                        
-                                    <td>
-                                    <?= h($activities->when) ?>
-                                    </td>
-                                                                        
-                                    <td>
-                                    <?= h($activities->invoice_id) ?>
-                                    </td>
-                                    
-                                                                        <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['controller' => 'Activities', 'action' => 'view', $activities->id], ['class'=>'btn btn-info btn-xs']) ?>
-
-                                    <?= $this->Html->link(__('Edit'), ['controller' => 'Activities', 'action' => 'edit', $activities->id], ['class'=>'btn btn-warning btn-xs']) ?>
-
-                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Activities', 'action' => 'delete', $activities->id], ['confirm' => __('Are you sure you want to delete # {0}?', $activities->id), 'class'=>'btn btn-danger btn-xs']) ?>    
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                                    
-                        </tbody>
-                    </table>
-
-                <?php endif; ?>
-
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
+          <a href="<?php echo $this->Url->build(array('controller' => 'invoices', 'action' => 'printview', $invoice['id'])); ?>" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment
+          </button>
+          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+            <i class="fa fa-download"></i> Generate PDF
+          </button>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
+    <!-- /.content -->
+    <div class="clearfix"></div>
+

@@ -1,7 +1,12 @@
+<?php
+/**
+  * @var \App\View\AppView $this
+  */
+?>
 <section class="content-header">
   <h1>
-    Client
-    <small><?= __('Add') ?></small>
+    Company
+    <small><?= __('Edit') ?></small>
   </h1>
   <ol class="breadcrumb">
     <li>
@@ -22,16 +27,13 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <?= $this->Form->create($client, array('role' => 'form')) ?>
+        <?= $this->Form->create($company, array('role' => 'form')) ?>
           <div class="box-body">
           <?php
-            echo $this->Form->hidden('company_id',array('value'=>$company_id));
             echo $this->Form->input('name');
             echo $this->Form->input('billing_address');
-            echo $this->Form->input('default_rate');
-            echo $this->Form->input('phone');
-            echo $this->Form->input('email');
-            echo $this->Form->input('currency');
+            echo $this->Form->input('stripe_key');
+            echo $this->Form->input('stripe_mode');
           ?>
           </div>
           <!-- /.box-body -->

@@ -20,7 +20,7 @@ class ClientsController extends AppController
     {
         //$clients = $this->paginate($this->Clients);
         $clients = $this->Clients->find();
-
+//print_r($this->Stripe->listCustomers());
         $this->set(compact('clients'));
         $this->set('_serialize', ['clients']);
     }
@@ -60,8 +60,10 @@ class ClientsController extends AppController
                 $this->Flash->error(__('The client could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('client'));
-        $this->set('_serialize', ['client']);
+        $company_id =  $this->Auth->user('company_id');
+
+        $this->set(compact('client','company_id'));
+        $this->set('_serialize', ['client','company_id']);
     }
 
     /**
