@@ -49,6 +49,7 @@ $nf = new \NumberFormatter( null, \NumberFormatter::CURRENCY);
                 <thead>
                     <tr>
                       <th>Date</th>
+                      <th>Project</th>
                       <th>Description</th>
                       <th>Qty</th>
                       <th>Rate</th>
@@ -62,6 +63,9 @@ $nf = new \NumberFormatter( null, \NumberFormatter::CURRENCY);
 								
 			    <td>
 			    <?= date("Y-m-d",strtotime($activities->date_time)) ?>
+			    </td>
+			    <td>
+			    <?= h($activities->project->name) ?>
 			    </td>
 			    <td>
 			    <?= h($activities->notes) ?>
@@ -112,11 +116,11 @@ $nf = new \NumberFormatter( null, \NumberFormatter::CURRENCY);
               </tr>
               <tr>
                 <th>Tax (9.3%)</th>
-                <td>$FIXME</td>
+                <td>-</td><!-- FIXME -->
               </tr>
               <tr>
                 <th>Shipping:</th>
-                <td>$FIXME</td>
+                <td>-</td><!-- FIXME -->
               </tr>
               <tr>
                 <th>Total:</th>

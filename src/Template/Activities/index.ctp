@@ -28,24 +28,21 @@
         <div class="box-body table-responsive no-padding">
           <table class="table table-hover">
             <tr>
-              <th><?= $this->Paginator->sort('id') ?></th>
-              <th><?= $this->Paginator->sort('user_id') ?></th>
+              
+              <th><?= $this->Paginator->sort('date_time') ?></th>
               <th><?= $this->Paginator->sort('client_id') ?></th>
               <th><?= $this->Paginator->sort('project_id') ?></th>
               <th><?= $this->Paginator->sort('billable_time') ?></th>
               <th><?= $this->Paginator->sort('notes') ?></th>
-              <th><?= $this->Paginator->sort('when') ?></th>
               <th><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($activities as $activity): ?>
               <tr>
-                <td><?= h($activity->id) ?></td>
-                <td><?= $activity->has('user') ? $this->Html->link($activity->user->id, ['controller' => 'Users', 'action' => 'view', $activity->user->id]) : '' ?></td>
+                <td><?= h($activity->date_time) ?></td>
                 <td><?= $activity->has('client') ? $this->Html->link($activity->client->name, ['controller' => 'Clients', 'action' => 'view', $activity->client->id]) : '' ?></td>
                 <td><?= $activity->has('project') ? $this->Html->link($activity->project->name, ['controller' => 'Projects', 'action' => 'view', $activity->project->id]) : '' ?></td>
                 <td><?= $this->Number->format($activity->billable_time) ?></td>
                 <td><?= h($activity->notes) ?></td>
-                <td><?= h($activity->when) ?></td>
                 <td class="actions" style="white-space:nowrap">
                   <?= $this->Html->link(__('View'), ['action' => 'view', $activity->id], ['class'=>'btn btn-info btn-xs']) ?>
                   <?= $this->Html->link(__('Edit'), ['action' => 'edit', $activity->id], ['class'=>'btn btn-warning btn-xs']) ?>

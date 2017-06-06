@@ -31,6 +31,8 @@
             echo $this->Form->input('phone');
             echo $this->Form->input('email');
             echo $this->Form->input('currency');
+            echo $this->Form->input('username');
+            echo $this->Form->input('password');
           ?>
           </div>
           <!-- /.box-body -->

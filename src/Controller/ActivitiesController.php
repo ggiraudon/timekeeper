@@ -18,10 +18,27 @@ class ActivitiesController extends AppController
      */
     public function index()
     {
+
+	$filter=$this->request->query("filter");
         $this->paginate = [
             'contain' => ['Users', 'Clients', 'Projects', 'Invoices']
         ];
-        $activities = $this->paginate($this->Activities);
+
+	switch($filter)
+	{
+
+		case "uninvoiced":
+			$criteria=['Activities.invoice_id IS NULL'];
+			break;
+
+		case "uninvoiced":
+			$criteria=['Activities.invoice_id IS NOT'=>null];
+			break;
+
+		default:
+			$criteria=[];
+	}
+        $activities = $this->paginate($this->Activities,['conditions'=>$criteria]);
 
         $this->set(compact('activities'));
         $this->set('_serialize', ['activities']);

@@ -33,7 +33,8 @@ if (file_exists($file)) {
             <i class="fa fa-clock-o"></i> <span>Activities</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-            <li><a href="<?php echo $this->Url->build('/activities'); ?>"><i class="fa fa-circle-o"></i>List</a></li>
+            <li><a href="<?php echo $this->Url->build('/activities?filter=uninvoiced'); ?>"><i class="fa fa-circle-o"></i>Not Invoiced</a></li>
+            <li><a href="<?php echo $this->Url->build('/activities?filter=invoiced'); ?>"><i class="fa fa-circle-o"></i>Invoiced</a></li>
             <li><a href="<?php echo $this->Url->build('/activities/add'); ?>"><i class="fa fa-circle-o"></i>New</a></li>
         </ul>
     </li>
