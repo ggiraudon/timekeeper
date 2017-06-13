@@ -68,8 +68,9 @@ class InvoicesController extends AppController
                 $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
             }
         }
-        $clients = $this->Invoices->Clients->find('list', ['limit' => 200]);
-        $this->set(compact('invoice', 'clients'));
+        $clients = $this->Invoices->Clients->find('all');
+	$taxClasses = $this->Invoices->Clients->TaxClasses->find('all',['contain' => ['TaxClassRates']]);
+        $this->set(compact('invoice', 'clients','taxClasses'));
         $this->set('_serialize', ['invoice']);
     }
 

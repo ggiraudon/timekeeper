@@ -51,6 +51,10 @@ class ClientsTable extends Table
             'foreignKey' => 'company_id',
             'joinType' => 'INNER'
         ]);
+        $this->belongsTo('TaxClasses', [
+            'foreignKey' => 'tax_class_id',
+            'joinType' => 'INNER'
+        ]);
 
 
     }
