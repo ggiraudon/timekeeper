@@ -5,10 +5,10 @@
     "type": "project",
     "license": "MIT",
     "repositories": [
-	    {
-		    "type": "vcs",
-		    "url": "http://github.com/ggiraudon/cakephp-stripe"
-	    }
+        {
+            "type": "vcs",
+            "url": "http://github.com/ggiraudon/cakephp-stripe"
+        }
     ],
     "require": {
         "php": ">=5.5.9",
@@ -20,10 +20,9 @@
         "friendsofcake/crud": "~4.0",
         "admad/cakephp-jwt-auth": "^2.0",
         "friendsofcake/cakepdf": "^3.2",
-	"hashmode/cakephp-stripe": "dev-master",
+        "hashmode/cakephp-stripe": "dev-master",
         "paypal/rest-api-sdk-php": "*",
         "stripe/stripe-php": "^4.10"
-	
     },
     "require-dev": {
         "psy/psysh": "@stable",
@@ -37,13 +36,15 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src"
+            "App\\": "src",
+            "EndUserInterface\\": "./plugins/EndUserInterface/src"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "App\\Test\\": "tests",
-            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests",
+            "EndUserInterface\\Test\\": "./plugins/EndUserInterface/tests"
         }
     },
     "scripts": {

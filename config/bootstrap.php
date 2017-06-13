@@ -242,3 +242,5 @@ Plugin::load('Crud');
 Plugin::load('ADmad/JwtAuth');
 
 Plugin::load('CakePdf', ['bootstrap' => true]);
+
+Plugin::load('EndUserInterface', ['bootstrap' => false, 'routes' => true]);
