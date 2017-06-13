@@ -142,12 +142,8 @@
                 <th scope="col"><?= __('Amount') ?></th>
                 <th scope="col"><?= __('Currency') ?></th>
                 <th scope="col"><?= __('Interval') ?></th>
-                <th scope="col"><?= __('Interval Count') ?></th>
                 <th scope="col"><?= __('Status') ?></th>
                 <th scope="col"><?= __('Payment Type') ?></th>
-                <th scope="col"><?= __('Stripe Plan Id') ?></th>
-                <th scope="col"><?= __('Stripe Subscription Id') ?></th>
-                <th scope="col"><?= __('Paypal Subscription Id') ?></th>
                 <th scope="col"><?= __('Created') ?></th>
                 <th scope="col"><?= __('Modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -157,13 +153,9 @@
                 <td><?= h($subscriptions->name) ?></td>
                 <td><?= h($subscriptions->amount) ?></td>
                 <td><?= h($subscriptions->currency) ?></td>
-                <td><?= h($subscriptions->interval) ?></td>
-                <td><?= h($subscriptions->interval_count) ?></td>
+                <td><?= h($subscriptions->interval_count)." ".h($subscriptions->interval) ?></td>
                 <td><?= h($subscriptions->status) ?></td>
                 <td><?= h($subscriptions->payment_type) ?></td>
-                <td><?= h($subscriptions->stripe_plan_id) ?></td>
-                <td><?= h($subscriptions->stripe_subscription_id) ?></td>
-                <td><?= h($subscriptions->paypal_subscription_id) ?></td>
                 <td><?= h($subscriptions->created) ?></td>
                 <td><?= h($subscriptions->modified) ?></td>
                 <td class="actions" style="text-align:center;">
@@ -185,41 +177,6 @@
 		    <?php endif;?>
 
 		    
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    </div>
-    <div class="related">
-        <h4><?= __('Related User Timers') ?></h4>
-        <?php if (!empty($client->user_timers)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('User Id') ?></th>
-                <th scope="col"><?= __('Client Id') ?></th>
-                <th scope="col"><?= __('Project Id') ?></th>
-                <th scope="col"><?= __('Description') ?></th>
-                <th scope="col"><?= __('Start') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($client->user_timers as $userTimers): ?>
-            <tr>
-                <td><?= h($userTimers->id) ?></td>
-                <td><?= h($userTimers->user_id) ?></td>
-                <td><?= h($userTimers->client_id) ?></td>
-                <td><?= h($userTimers->project_id) ?></td>
-                <td><?= h($userTimers->description) ?></td>
-                <td><?= h($userTimers->start) ?></td>
-                <td><?= h($userTimers->created) ?></td>
-                <td><?= h($userTimers->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'UserTimers', 'action' => 'view', $userTimers->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'UserTimers', 'action' => 'edit', $userTimers->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'UserTimers', 'action' => 'delete', $userTimers->id], ['confirm' => __('Are you sure you want to delete # {0}?', $userTimers->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

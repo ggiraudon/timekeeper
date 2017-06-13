@@ -144,14 +144,14 @@ class SubscriptionsController extends AppController
 			$subscription->status="ACTIVE";
 			$subscription->payment_type="STRIPE";
 			$this->Subscriptions->save($subscription);
-			$this->redirect("/clients/");
+			$this->redirect(['controller' => 'clients', 'action' => 'index']);
 		}
 		catch(Exception $e)
 		{
 			die("unable to sign up customer:" . $_POST['stripeEmail'].
 					", error:" . $e->getMessage());
 		}
-		$this->redirect("/clients/");
+		$this->redirect(['controller' => 'clients', 'action' => 'index']);
 
 	}
 
@@ -235,9 +235,8 @@ class SubscriptionsController extends AppController
 
 			$merchantPreferences = new MerchantPreferences();
 
-			$baseUrl = Router::url('/', true);
-			$merchantPreferences->setReturnUrl($baseUrl."Subscriptions/paypalExecuteAgreement?subscription_id=".$subscription->id."&success=true")
-				->setCancelUrl($baseUrl."Subscriptions/paypalExecuteAgreement?subscription_id=".$subscription->id."&success=false")
+			$merchantPreferences->setReturnUrl(Router::url(['plugin'=>'EndUserInterface','controller'=>'Subscriptions','action'=>'paypalExecuteAgreement'],true)."?subscription_id=".$subscription->id."&success=true")
+				->setCancelUrl(Router::url(['plugin'=>'EndUserInterface','controller'=>'Subscriptions','action'=>'paypalExecuteAgreement'],true)."?subscription_id=".$subscription->id."&success=false")
 				->setAutoBillAmount("yes")
 				->setInitialFailAmountAction("CONTINUE")
 				->setMaxFailAttempts("0");
@@ -294,9 +293,11 @@ class SubscriptionsController extends AppController
 				$subscription->payment_type="PAYPAL";
 
 				$this->Subscriptions->save($subscription);
+				$this->redirect(['controller' => 'clients', 'action' => 'index']);
 
 			} else {
-				$this->redirect("/clients/");
+				// Probably a failure. Nothing to do
+				$this->redirect(['controller' => 'clients', 'action' => 'index']);
 			}
 		}else{
 			die('Invalid API Call');
