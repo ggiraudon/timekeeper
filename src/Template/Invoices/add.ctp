@@ -30,7 +30,7 @@
 			foreach($clients as $client):
 		?>	
 
-			<option value="<?= $client->id?>" data-rate="<?=$client->default_rate?>"><?=$client->name?></option>
+			<option value="<?= $client->id?>" data-rate="<?=$client->default_rate?>" data-taxclass="<?=$client->tax_class_id?>"><?=$client->name?></option>
 		<?php
 			endforeach;
 
@@ -39,7 +39,6 @@
           <?php
 	
             echo $this->Form->input('date_time');
-            echo $this->Form->input('discount');
           ?>
           </div>
           <!-- /.box-body -->
@@ -68,6 +67,13 @@
 
 	    </table>
 	  </div>
+	  <div class="input"><label for="pretotal">Total (w/o tax)</label><input name="pretotal" id="pretotal" readonly></input></div>
+          <?php  echo $this->Form->input('discount'); ?>
+	  <div id="taxes">
+
+	  </div>
+
+	  <div class="input"><label for="total">Total</label><input name="total" id="total" readonly></input></div>
           <div class="box-footer">
             <?= $this->Form->button(__('Save')) ?>
           </div>
@@ -95,6 +101,32 @@ $this->Html->script([
 
 <?php $this->start('scriptBotton'); ?>
 <script>
+
+  function update_totals(){
+		pre_tax=0;
+		post_discount=0;
+		post_tax=0;
+		$(".activity:checkbox:checked").each(function(index,item){
+			pre_tax+=Number($(this).attr("data-cost"));
+
+		});
+		discount=Number($("#discount").val());	
+		if(isNaN(discount)) { discount=0; }
+		post_discount=Math.max(0,pre_tax-discount);
+
+		$(".tax").each(function(){
+			taxval=Math.round(Number($(this).attr("data-rate"))*post_discount)/100;
+			$(this).val(taxval);
+			post_tax+=taxval;
+		});	
+		post_tax+=post_discount;
+		$("#pretotal").val(pre_tax);
+		$("#total").val(post_tax);
+
+
+  }
+
+
   $(function () {
     var taxClasses = <?php echo(json_encode($taxClasses->jsonSerialize())); ?>;
     var activitiesTable = $('#activities-table').DataTable({
@@ -111,19 +143,19 @@ $this->Html->script([
 		    {
 			    "orderable" : false,
 			    "render": function (data, type, JsonResultRow, meta) {
-				qty=parseFloat(JsonResultRow.billable_time);
+				qty=Number(JsonResultRow.billable_time);
 				if(JsonResultRow.rate)
 				{
-						rate=parseFloat(JsonResultRow.rate);
+						rate=Number(JsonResultRow.rate);
 
 				}else{
 					if(JsonResultRow.project.rate)
 					{
-						rate=parseFloat(JsonResultRow.project.rate);
+						rate=Number(JsonResultRow.project.rate);
 					
 					}else{
 
-						rate=parseFloat($('#client-id').find(":selected").attr("data-rate"));
+						rate=Number($('#client-id').find(":selected").attr("data-rate"));
 					}
 
 				}
@@ -146,10 +178,40 @@ $this->Html->script([
     });
 
 	$('#client-id').change(function(){
-		activitiesTable.ajax.reload();
+		activitiesTable.ajax.reload(function(){
+			$(".activity").change(function(){
+					 update_totals(); 
+			});
+
+
+		});
+		tax_class=$('#client-id').find(":selected").attr("data-taxclass");
+		$(taxClasses).each(function(index,item){
+			if(item.id==tax_class){
+				buffer="";
+				$(item.tax_class_rates).each(function(idx,rate){
+	    				buffer+='<div class="input"><label for="tax'+idx+'">'+rate.name+' ('+rate.rate+'%)</label><input class="tax" data-rate="'+rate.rate+'" name="tax['+rate.name+']" id="tax'+idx+'" readonly></input></div>';
+					$("#taxes").html(buffer);
+
+				});
+			}
+		});
+		
+	});
+	$("#discount").keyup(function(){
+			 update_totals(); 
+	});
+	$("#discount").change(function(){
+			 update_totals(); 
 	});
 
 
+
+
+
   });
+
+
+
 </script>
 <?php $this->end(); ?>
