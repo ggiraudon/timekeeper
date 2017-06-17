@@ -26,7 +26,7 @@
           <div class="box-body">
           <?php
             echo $this->Form->input('client_id', ['options' => $clients]);
-            echo $this->Form->input('date_time');
+            echo $this->Form->input('invoice_date');
             echo $this->Form->input('discount');
           ?>
           </div>

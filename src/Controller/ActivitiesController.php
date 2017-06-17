@@ -69,15 +69,26 @@ class ActivitiesController extends AppController
     public function add()
     {
         $activity = $this->Activities->newEntity();
-        if ($this->request->is('post')) {
-            $activity = $this->Activities->patchEntity($activity, $this->request->data);
-            if ($this->Activities->save($activity)) {
-                $this->Flash->success(__('The activity has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The activity could not be saved. Please, try again.'));
-            }
+        if ($this->request->is('post')) {
+
+		$project = $this->Activities->Projects->get($this->request->data['project_id']);
+		$client = $this->Activities->Clients->get($this->request->data['client_id']);
+
+		if(empty($this->request->data['rate']))
+		if(!empty($project->rate))
+			$this->request->data['rate']=$project->rate;
+		else
+			$this->request->data['rate']=$client->default_rate;
+
+		$activity = $this->Activities->patchEntity($activity, $this->request->data);
+		if ($this->Activities->save($activity)) {
+			$this->Flash->success(__('The activity has been saved.'));
+
+			return $this->redirect(['action' => 'index']);
+		} else {
+			$this->Flash->error(__('The activity could not be saved. Please, try again.'));
+		}
         } 
 
 
@@ -85,8 +96,7 @@ class ActivitiesController extends AppController
         
         $clients = $this->Activities->Clients->find('list', ['limit' => 200]);
         $projects = $this->Activities->Projects->find('list', ['limit' => 200]);
-        $invoices = $this->Activities->Invoices->find('list', ['limit' => 200]);
-        $this->set(compact('activity', 'user_id', 'clients', 'projects', 'invoices'));
+        $this->set(compact('activity', 'user_id', 'clients', 'projects'));
         $this->set('_serialize', ['activity']);
     }
 
@@ -115,8 +125,7 @@ class ActivitiesController extends AppController
         $users = $this->Activities->Users->find('list', ['limit' => 200]);
         $clients = $this->Activities->Clients->find('list', ['limit' => 200]);
         $projects = $this->Activities->Projects->find('list', ['limit' => 200]);
-        $invoices = $this->Activities->Invoices->find('list', ['limit' => 200]);
-        $this->set(compact('activity', 'users', 'clients', 'projects', 'invoices'));
+        $this->set(compact('activity', 'users', 'clients', 'projects'));
         $this->set('_serialize', ['activity']);
     }
 

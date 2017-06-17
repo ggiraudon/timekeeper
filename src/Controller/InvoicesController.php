@@ -57,10 +57,24 @@ class InvoicesController extends AppController
      */
     public function add()
     {
+	$company=$this->Auth->user('company');
+	$this->loadModel('Activities');
+	$this->loadModel('Companies');
         $invoice = $this->Invoices->newEntity();
         if ($this->request->is('post')) {
+	    $this->request->data['tax']=json_encode($this->request->data['tax']);
+	    $this->request->data['label']=sprintf($company['invoice_number_format'],$company['next_invoice_number']);
             $invoice = $this->Invoices->patchEntity($invoice, $this->request->data);
             if ($this->Invoices->save($invoice)) {
+		foreach($this->request->data['activities'] as $activity_id)
+		{
+			$activity=$this->Activities->get($activity_id);
+			$activity->invoice_id=$invoice->id;
+			$this->Activities->save($activity);
+		}
+		$company_update=$this->Companies->get($company['id']);
+		$company_update->next_invoice_number++;
+		$this->Companies->save($company_update);
                 $this->Flash->success(__('The invoice has been saved.'));
 
                 return $this->redirect(['action' => 'index']);

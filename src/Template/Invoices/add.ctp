@@ -36,9 +36,9 @@
 
 		?>
 	    </select></div>
-          <?php
-	
-            echo $this->Form->input('date_time');
+          <?php	
+	    echo $this->Form->label('invoice_date', 'Invoice Date');
+            echo $this->Form->date('invoice_date',['empty'=>false,'default'=>time(),'label'=>'Invoice Date']);
           ?>
           </div>
           <!-- /.box-body -->
@@ -160,7 +160,7 @@ $this->Html->script([
 
 				}
 				cost=qty*rate;
-			    	return '<input type="checkbox" class="activity" name="activities['+JsonResultRow.id+']" data-rate="'+rate+'" data-cost="'+cost+'">';
+			    	return '<input type="checkbox" class="activity" name="activities['+JsonResultRow.id+']" value="'+JsonResultRow.id+'" data-rate="'+rate+'" data-cost="'+cost+'">';
 			    }
 		    },
 		    { data: 'date_time' },

@@ -59,9 +59,9 @@ class InvoicesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->dateTime('date_time')
-            ->requirePresence('date_time', 'create')
-            ->notEmpty('date_time');
+            ->date('invoice_date')
+            ->requirePresence('invoice_date', 'create')
+            ->notEmpty('invoice_date');
 
         $validator
             ->decimal('discount')
