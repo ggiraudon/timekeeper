@@ -36,36 +36,18 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-  <div class="login-logo"><b>TimeKeeper</b></div>
+  <div class="login-logo"><b>Client Access</b></div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg"><?php echo __('Sign in to start your session') ?></p>
     <p> <?php echo $this->Flash->render(); ?> </p>
     <p> <?php echo $this->Flash->render('auth'); ?> </p>
 
 <?php echo $this->fetch('content'); ?>
 
     <?php
-    if (isset($theme['login']['show_social']) && $theme['login']['show_social']) {
-        ?>
-        <div class="social-auth-links text-center">
-          <p>- <?php echo __('OR') ?> -</p>
-          <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> <?php echo __('Sign in using Facebook') ?></a>
-          <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> <?php echo __('Sign in using Google+') ?></a>
-        </div>
-        <?php
-    }
-    ?>
-
-    <?php
     if (isset($theme['login']['show_remember']) && $theme['login']['show_remember']) {
         ?>
         <a href="#"><?php echo __('I forgot my password') ?></a><br>
-        <?php
-    }
-    if (isset($theme['login']['show_register']) && $theme['login']['show_register']) {
-        ?>
-        <a href="#" class="text-center"><?php echo __('Register a new membership') ?></a>
         <?php
     }
     ?>

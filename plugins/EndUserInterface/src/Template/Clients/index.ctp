@@ -1,8 +1,5 @@
 <section class="content-header">
   <ol class="breadcrumb">
-    <li>
-    <?= $this->Html->link('<i class="fa fa-dashboard"></i> ' . __('Back'), ['action' => 'index'], ['escape' => false])?>
-    </li>
   </ol>
 </section>
 
