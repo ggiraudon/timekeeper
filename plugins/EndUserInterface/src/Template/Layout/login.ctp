@@ -1,55 +1,94 @@
-<?php
-/**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @since         0.10.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-
-$cakeDescription = 'CakePHP: the rapid development php framework';
-?>
 <!DOCTYPE html>
 <html>
 <head>
-    <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
-    </title>
-    <?= $this->Html->meta('icon') ?>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><?php echo isset($theme['title']) ? $theme['title'] : 'AdminLTE 2 | Log in'; ?></title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.5 -->
+  <?php echo $this->Html->css('AdminLTE./bootstrap/css/bootstrap'); ?>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <?php echo $this->Html->css('AdminLTE.AdminLTE.min'); ?>
+  <!-- iCheck -->
+  <?php echo $this->Html->css('AdminLTE./plugins/iCheck/square/blue'); ?>
 
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <style>
+	label {
+	    min-width: 100px;
+	}
 
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
+	section.content {
+	    min-height: 100px;
+	}
+  </style>
+
 </head>
-<body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
-        </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-            </ul>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo"><b>TimeKeeper</b></div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg"><?php echo __('Sign in to start your session') ?></p>
+    <p> <?php echo $this->Flash->render(); ?> </p>
+    <p> <?php echo $this->Flash->render('auth'); ?> </p>
+
+<?php echo $this->fetch('content'); ?>
+
+    <?php
+    if (isset($theme['login']['show_social']) && $theme['login']['show_social']) {
+        ?>
+        <div class="social-auth-links text-center">
+          <p>- <?php echo __('OR') ?> -</p>
+          <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> <?php echo __('Sign in using Facebook') ?></a>
+          <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> <?php echo __('Sign in using Google+') ?></a>
         </div>
-    </nav>
-    <?= $this->Flash->render() ?>
-    <div class="container clearfix">
-        <?= $this->fetch('content') ?>
-    </div>
-    <footer>
-    </footer>
+        <?php
+    }
+    ?>
+
+    <?php
+    if (isset($theme['login']['show_remember']) && $theme['login']['show_remember']) {
+        ?>
+        <a href="#"><?php echo __('I forgot my password') ?></a><br>
+        <?php
+    }
+    if (isset($theme['login']['show_register']) && $theme['login']['show_register']) {
+        ?>
+        <a href="#" class="text-center"><?php echo __('Register a new membership') ?></a>
+        <?php
+    }
+    ?>
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery 2.1.4 -->
+<?php echo $this->Html->script('/plugins/jQuery/jQuery-2.1.4.min'); ?>
+<!-- Bootstrap 3.3.5 -->
+<?php echo $this->Html->script('/bootstrap/js/bootstrap'); ?>
+<!-- iCheck -->
+<?php echo $this->Html->script('/plugins/iCheck/icheck.min'); ?>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+  });
+</script>
 </body>
 </html>

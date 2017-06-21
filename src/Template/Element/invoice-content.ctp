@@ -112,19 +112,28 @@ $nf = new \NumberFormatter( null, \NumberFormatter::CURRENCY);
             <table class="table">
               <tr>
                 <th style="width:50%">Subtotal:</th>
-		<td><?php  echo $nf->formatCurrency( $invoice_subtotal, $invoice->client['currency']); ?>
+		<td><?php  echo $nf->formatCurrency( $invoice->pretotal, $invoice->client['currency']); ?>
               </tr>
               <tr>
-                <th>Tax (9.3%)</th>
-                <td>-</td><!-- FIXME -->
+                <th style="width:50%">Discount:</th>
+		<td><?php  echo $nf->formatCurrency( $invoice->discount, $invoice->client['currency']); ?>
               </tr>
-              <tr>
-                <th>Shipping:</th>
-                <td>-</td><!-- FIXME -->
-              </tr>
+
+
+	      <?php 
+			
+			$taxes=json_decode($invoice->tax,true);
+			if(is_array($taxes))
+			foreach($taxes as $tax_name=>$tax_amount) :
+	      ?>
+			      <tr>
+				<th><?=$tax_name?></th>
+				<td><?php  echo $nf->formatCurrency( $tax_amount, $invoice->client['currency']); ?>
+			      </tr>
+	      <?php 	endforeach;?>
               <tr>
                 <th>Total:</th>
-		<td><?php  echo $nf->formatCurrency( $invoice_subtotal, $invoice->client['currency']); ?>
+		<td><?php  echo $nf->formatCurrency( $invoice->total, $invoice->client['currency']); ?>
               </tr>
             </table>
           </div>

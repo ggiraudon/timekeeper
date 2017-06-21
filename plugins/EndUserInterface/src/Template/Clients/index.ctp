@@ -1,186 +1,355 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<div class="clients view large-9 medium-8 columns content">
-    <h3><?= h($client->name) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Name') ?></th>
-            <td><?= h($client->name) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Phone') ?></th>
-            <td><?= h($client->phone) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Email') ?></th>
-            <td><?= h($client->email) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Currency') ?></th>
-            <td><?= h($client->currency) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Username') ?></th>
-            <td><?= h($client->username) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($client->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($client->modified) ?></td>
-        </tr>
-    </table>
-    <div class="row">
-        <h4><?= __('Billing Address') ?></h4>
-        <?= $this->Text->autoParagraph(h($client->billing_address)); ?>
-    </div>
-    <div class="related">
-        <h4><?= __('Related Projects') ?></h4>
-        <?php if (!empty($client->projects)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Name') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($client->projects as $projects): ?>
-            <tr>
-                <td><?= h($projects->name) ?></td>
-                <td><?= h($projects->created) ?></td>
-                <td><?= h($projects->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Projects', 'action' => 'view', $projects->id]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    </div>
+<section class="content-header">
+  <ol class="breadcrumb">
+    <li>
+    <?= $this->Html->link('<i class="fa fa-dashboard"></i> ' . __('Back'), ['action' => 'index'], ['escape' => false])?>
+    </li>
+  </ol>
+</section>
 
-    <div class="related">
-        <h4><?= __('Related Activities') ?></h4>
-        <?php if (!empty($client->activities)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Date Time') ?></th>
-                <th scope="col"><?= __('Billable Time') ?></th>
-                <th scope="col"><?= __('Rate') ?></th>
-                <th scope="col"><?= __('Notes') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($client->activities as $activities): ?>
-            <tr>
-                <td><?= h($activities->date_time) ?></td>
-                <td><?= h($activities->billable_time) ?></td>
-                <td><?= h($activities->rate) ?></td>
-                <td style="width:1200px;"><?= h($activities->notes) ?></td>
-                <td><?= h($activities->created) ?></td>
-                <td><?= h($activities->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Activities', 'action' => 'view', $activities->id]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    </div>
-    <div class="related">
-        <h4><?= __('Related Invoices') ?></h4>
-        <?php if (!empty($client->invoices)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Invoice Date') ?></th>
-                <th scope="col"><?= __('Label') ?></th>
-                <th scope="col"><?= __('Discount') ?></th>
-                <th scope="col"><?= __('Account Balance') ?></th>
-                <th scope="col"><?= __('Due Override') ?></th>
-                <th scope="col"><?= __('Order Id') ?></th>
-                <th scope="col"><?= __('Payment Due') ?></th>
-                <th scope="col"><?= __('Account No') ?></th>
-                <th scope="col"><?= __('Status') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($client->invoices as $invoices): ?>
-            <tr>
-                <td><?= h($invoices->invoice_date) ?></td>
-                <td><?= h($invoices->label) ?></td>
-                <td><?= h($invoices->discount) ?></td>
-                <td><?= h($invoices->account_balance) ?></td>
-                <td><?= h($invoices->due_override) ?></td>
-                <td><?= h($invoices->order_id) ?></td>
-                <td><?= h($invoices->payment_due) ?></td>
-                <td><?= h($invoices->account_no) ?></td>
-                <td><?= h($invoices->status) ?></td>
-                <td><?= h($invoices->created) ?></td>
-                <td><?= h($invoices->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Invoices', 'action' => 'view', $invoices->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Invoices', 'action' => 'edit', $invoices->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Invoices', 'action' => 'delete', $invoices->id], ['confirm' => __('Are you sure you want to delete # {0}?', $invoices->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    </div>
-    <div class="related">
-        <h4><?= __('Related Subscriptions') ?></h4>
-        <?php if (!empty($client->subscriptions)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Name') ?></th>
-                <th scope="col"><?= __('Amount') ?></th>
-                <th scope="col"><?= __('Currency') ?></th>
-                <th scope="col"><?= __('Interval') ?></th>
-                <th scope="col"><?= __('Status') ?></th>
-                <th scope="col"><?= __('Payment Type') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($client->subscriptions as $subscriptions): ?>
-            <tr>
-                <td><?= h($subscriptions->name) ?></td>
-                <td><?= h($subscriptions->amount) ?></td>
-                <td><?= h($subscriptions->currency) ?></td>
-                <td><?= h($subscriptions->interval_count)." ".h($subscriptions->interval) ?></td>
-                <td><?= h($subscriptions->status) ?></td>
-                <td><?= h($subscriptions->payment_type) ?></td>
-                <td><?= h($subscriptions->created) ?></td>
-                <td><?= h($subscriptions->modified) ?></td>
-                <td class="actions" style="text-align:center;">
-		    <?php if($subscriptions->status!="ACTIVE"):?>
-                    <?= $this->Html->image("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-34px.png", ["alt"=>"PayPal", "url"=> ['controller' => 'Subscriptions', 'action' => 'paypalActivate', $subscriptions->id]]) ?>
-			<br/><center>OR</center>
-			<form action="<?= $this->Url->build(["controller" => "Subscriptions","action" => "stripe-activate", $subscriptions->id])?>" method="POST">
-			  <script
-			    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-			    data-key="pk_XgbbAaibNCcXqGzB0dKkzmgMR3ue2"
-			    data-name="Subscription"
-			    data-description="<?= h($subscriptions->name) ?>"
-			    data-amount="<?= h($subscriptions->amount)*100 ?>"
-			    data-bitcoin="false"
-			    data-label="Credit Card">
-			  </script>
-			</form>
+<!-- Main content -->
+<section class="content">
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <i class="fa fa-info"></i>
+                <h3 class="box-title"><?php echo __('Information'); ?></h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <dl class="dl-horizontal">
+		<dt><?= __('Name') ?></dt>
+		<dd>
+		<?= h($client->name) ?>
+		</dd>
+		<dt><?= __('Phone') ?></dt>
+		<dd>
+		<?= h($client->phone) ?>
+		</dd>
+		<dt><?= __('Email') ?></dt>
+		<dd>
+		<?= h($client->email) ?>
+		</dd>
+		<dt><?= __('Currency') ?></dt>
+		<dd>
+		<?= h($client->currency) ?>
+		</dd>
 
-		    <?php endif;?>
-
-		    
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
+		<dt><?= __('Billing Address') ?></dt>
+		<dd>
+		<?= $this->Text->autoParagraph(h($client->billing_address)); ?>
+		</dd>
+                                                            </dl>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
     </div>
+    <!-- ./col -->
 </div>
+<!-- div -->
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <i class="fa fa-share-alt"></i>
+                    <h3 class="box-title"><?= __('{0}', ['Invoices']) ?></h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+
+                <?php if (!empty($client->invoices)): ?>
+
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                                                    
+                                    <th>
+                                    Number
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Invoice Date
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Total
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Payment Due
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Status
+                                    </th>
+                                        
+                                                                                                                                            
+                                <th>
+                                    <?php echo __('Actions'); ?>
+                                </th>
+                            </tr>
+
+                            <?php foreach ($client->invoices as $invoices): ?>
+                                <tr>
+                                                                        
+                                    <td>
+                                    <?= h($invoices->label) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($invoices->invoice_date) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($invoices->total) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($invoices->payment_due) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($invoices->status) ?>
+                                    </td>
+                                                                                                            
+                                    <td class="actions">
+                                    <?= $this->Html->link(__('View'), ['controller' => 'Invoices', 'action' => 'view', $invoices->id], ['class'=>'btn btn-info btn-xs']) ?>
+
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                                    
+                        </tbody>
+                    </table>
+
+                <?php endif; ?>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <i class="fa fa-share-alt"></i>
+                    <h3 class="box-title"><?= __('{0}', ['Subscriptions']) ?></h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+
+                <?php if (!empty($client->subscriptions)): ?>
+
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                                                    
+                                                                   
+                                    <th>
+                                    Name
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Amount
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Currency
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Interval
+                                    </th>
+                                        
+                                                                   
+                                    <th>
+                                    Status
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Payment Type
+                                    </th>
+                                        
+                                                                   
+                                    <th>
+                                    Created
+                                    </th>
+                                        
+                                                                    
+                                    <th>
+                                    Modified
+                                    </th>
+                                        
+                                                                                                                                            
+                                <th>
+                                    <?php echo __('Actions'); ?>
+                                </th>
+                            </tr>
+
+                            <?php foreach ($client->subscriptions as $subscriptions): ?>
+                                <tr>
+                                                                       
+                                    <td>
+                                    <?= h($subscriptions->name) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($subscriptions->amount) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($subscriptions->currency) ?>
+                                    </td>
+                                                                        
+                                    <td>
+				   	<?= h($subscriptions->interval_count)." ".h($subscriptions->interval) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($subscriptions->status) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($subscriptions->payment_type) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($subscriptions->created) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($subscriptions->modified) ?>
+                                    </td>
+
+
+                <td class="actions" style="text-align:center;">
+                    <?php if($subscriptions->status!="ACTIVE"):?>
+                    <?= $this->Html->image("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-34px.png", ["alt"=>"PayPal", "url"=> ['controller' => 'Subscriptions', 'action' => 'paypalActivate', $subscriptions->id]]) ?>
+                        <br/><center>OR</center>
+                        <form action="<?= $this->Url->build(["controller" => "Subscriptions","action" => "stripe-activate", $subscriptions->id])?>" method="POST">
+                          <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_XgbbAaibNCcXqGzB0dKkzmgMR3ue2"
+                            data-name="Subscription"
+                            data-description="<?= h($subscriptions->name) ?>"
+                            data-amount="<?= h($subscriptions->amount)*100 ?>"
+                            data-bitcoin="false"
+                            data-label="Credit Card">
+                          </script>
+                        </form>
+
+                    <?php endif;?>
+
+
+                </td>
+
+                                                                                                            
+                                </tr>
+                            <?php endforeach; ?>
+                                    
+                        </tbody>
+                    </table>
+
+                <?php endif; ?>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <i class="fa fa-share-alt"></i>
+                    <h3 class="box-title"><?= __('Uninvoiced {0}', ['Activities']) ?></h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+
+                <?php if (!empty($client->activities)): ?>
+
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                                                    
+                                    <th>
+                                    Date Time
+                                    </th>
+                                    <th>
+                                    Billable Time
+                                    </th>
+                                    <th>
+                                    Rate
+                                    </th>
+                                    <th>
+                                    Notes
+                                    </th>
+                                    <th>
+                                    Created
+                                    </th>
+                                    <th>
+                                    Modified 
+                                    </th>
+                                <th>
+                                    <?php echo __('Actions'); ?>
+                                </th>
+                            </tr>
+
+                            <?php foreach ($client->activities as $activities): ?>
+                                <tr>
+                                                                        
+                                    <td>
+                                    <?= h($activities->date_time) ?>
+                                    </td>
+                                   <td>
+                                    <?= h($activities->billable_time) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($activities->rate) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($activities->notes) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($activities->created) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($activities->modified) ?>
+                                    </td>
+                                                                                                            
+                                    <td class="actions">
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                                    
+                        </tbody>
+                    </table>
+
+                <?php endif; ?>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+               <!-- /.box-body -->
+</section>

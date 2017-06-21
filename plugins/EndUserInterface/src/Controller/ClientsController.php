@@ -31,6 +31,17 @@ class ClientsController extends AppController
         $this->set('_serialize', ['client']);
 
    }
+    public function view($id=null)
+    {
+	$id=$this->Auth->user('id');
+        $client = $this->Clients->get($id, [
+            'contain' => ['Companies', 'Activities', 'Invoices', 'Projects', 'Subscriptions', 'UserTimers']
+        ]);
+        $this->set('client', $client);
+        $this->set('_serialize', ['client']);
+
+   }
+
 
     public function login()
     {

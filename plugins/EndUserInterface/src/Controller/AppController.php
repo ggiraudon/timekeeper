@@ -4,6 +4,7 @@ namespace EndUserInterface\Controller;
 
 use App\Controller\AppController as BaseController;
 use Cake\Event\Event;
+use Cake\Core\Configure;
 
 class AppController extends BaseController
 {
@@ -38,6 +39,7 @@ class AppController extends BaseController
         ) {
             $this->set('_serialize', true);
         }
+        $this->set('theme', Configure::read('Theme'));
     }
 
 }
