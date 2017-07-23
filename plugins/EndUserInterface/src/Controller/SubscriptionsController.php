@@ -29,33 +29,6 @@ class SubscriptionsController extends AppController
 {
 
 
-	private function _getPaypalContext($company)
-	{
-
-		$this->apiContext = new \PayPal\Rest\ApiContext(
-				new \PayPal\Auth\OAuthTokenCredential(
-					$company->paypal_client_id,
-					$company->paypal_secret
-					)
-				);
-
-		$this->apiContext->setConfig(
-				array(
-					'log.LogEnabled' => true,
-					'log.FileName' => '/tmp/PayPal.log',
-					'log.LogLevel' => 'DEBUG'
-				     )
-				);
-
-
-
-	}
-
-	private function _getStripeContext($company)
-	{
-		Stripe::setApiKey($company->stripe_secret);
-	}
-
 	public function view($id = null)
 	{
 		$subscription = $this->Subscriptions->get($id, [
@@ -115,6 +88,7 @@ class SubscriptionsController extends AppController
 
 		$this->redirect($approvalURL);
 	}
+
 
 	public function stripeActivate($id = null)
 	{

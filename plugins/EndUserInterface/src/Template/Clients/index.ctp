@@ -4,7 +4,7 @@
 </section>
 
 <!-- Main content -->
-<section class="content">
+<section class="content" style="max-width:900px;">
 <div class="row">
     <div class="col-md-12">
         <div class="box box-solid">
@@ -50,7 +50,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <i class="fa fa-share-alt"></i>
+                    <i class="fa fa-file-text-o"></i>
                     <h3 class="box-title"><?= __('{0}', ['Invoices']) ?></h3>
                 </div>
                 <!-- /.box-header -->
@@ -96,7 +96,7 @@
                                 <tr>
                                                                         
                                     <td>
-                                    <?= h($invoices->label) ?>
+                                    <?= $this->Html->link(h($invoices->label) , ['controller' => 'Invoices', 'action' => 'view', $invoices->id], ['class'=>'btn btn-info btn-xs']) ?>
                                     </td>
                                                                         
                                     <td>
@@ -116,7 +116,23 @@
                                     </td>
                                                                                                             
                                     <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['controller' => 'Invoices', 'action' => 'view', $invoices->id], ['class'=>'btn btn-info btn-xs']) ?>
+                    <?php if($invoices->status!="PAID"):?>
+                    <?= $this->Html->image("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-34px.png", ["alt"=>"PayPal", "url"=> ['controller' => 'Invoices', 'action' => 'paypalPay', $invoices->id]]) ?>
+                        <br/><center>OR</center>
+                        <form action="<?= $this->Url->build(["controller" => "Invoices","action" => "stripe-pay", $invoices->id])?>" method="POST">
+                          <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_XgbbAaibNCcXqGzB0dKkzmgMR3ue2"
+                            data-name="Invoice"
+                            data-description="<?= h($invoices->label) ?>"
+                            data-amount="<?= h($invoices->total)*100 ?>"
+                            data-bitcoin="false"
+                            data-label="Credit Card">
+                          </script>
+                        </form>
+
+                    <?php endif;?>
+
 
                                     </td>
                                 </tr>
@@ -137,7 +153,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <i class="fa fa-share-alt"></i>
+                    <i class="fa fa-cloud"></i>
                     <h3 class="box-title"><?= __('{0}', ['Subscriptions']) ?></h3>
                 </div>
                 <!-- /.box-header -->
@@ -271,7 +287,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <i class="fa fa-share-alt"></i>
+                    <i class="fa fa-calendar-check-o"></i>
                     <h3 class="box-title"><?= __('Uninvoiced {0}', ['Activities']) ?></h3>
                 </div>
                 <!-- /.box-header -->
