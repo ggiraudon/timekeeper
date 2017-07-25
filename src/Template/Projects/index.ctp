@@ -28,7 +28,6 @@
         <div class="box-body table-responsive no-padding">
           <table class="table table-hover">
             <tr>
-              <th><?= $this->Paginator->sort('id') ?></th>
               <th><?= $this->Paginator->sort('client_id') ?></th>
               <th><?= $this->Paginator->sort('name') ?></th>
               <th><?= $this->Paginator->sort('rate') ?></th>
@@ -36,7 +35,6 @@
             </tr>
             <?php foreach ($projects as $project): ?>
               <tr>
-                <td><?= h($project->id) ?></td>
                 <td><?= $project->has('client') ? $this->Html->link($project->client->name, ['controller' => 'Clients', 'action' => 'view', $project->client->id]) : '' ?></td>
                 <td><?= h($project->name) ?></td>
                 <td><?= $this->Number->format($project->rate) ?></td>

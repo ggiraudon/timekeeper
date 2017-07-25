@@ -1,4 +1,11 @@
-      <h1>
+ <section class="content-header">
+  <ol class="breadcrumb">
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content" style="max-width:900px;">
+     <h1>
         Invoice
         <small><?= $invoice['label']?></small>
       </h1>
@@ -23,5 +30,5 @@
         </div>
       </div>
     <!-- /.content -->
-
+</section>
 

@@ -225,7 +225,7 @@ if (Configure::read('debug')) {
 
 Plugin::load('AdminLTE', ['bootstrap' => true, 'routes' => true]);
 Configure::write('Theme', [
-    'title' => 'AdminLTE',
+    'title' => 'TimeKEEPER',
     'logo' => [
         'mini' => '<b>T</b>K',
         'large' => '<b>Time</b>KEEPER'

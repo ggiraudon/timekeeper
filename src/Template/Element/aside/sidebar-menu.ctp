@@ -11,25 +11,17 @@ if (file_exists($file)) {
 
     <li class="header">MAIN NAVIGATION</li>
     <li class="treeview">
-        <a href="#">
-            <i class="fa fa-id-card"></i> <span>Clients</span> <i class="fa fa-angle-left pull-right"></i>
+        <a href="<?php echo $this->Url->build('/clients'); ?>">
+            <i class="fa fa-id-card"></i> <span>Clients</span>
         </a>
-        <ul class="treeview-menu">
-            <li><a href="<?php echo $this->Url->build('/clients'); ?>"><i class="fa fa-circle-o"></i>List</a></li>
-            <li><a href="<?php echo $this->Url->build('/clients/add'); ?>"><i class="fa fa-circle-o"></i>New</a></li>
-        </ul>
     </li>
     <li class="treeview">
-        <a href="#">
-            <i class="fa fa-flask"></i> <span>Projects</span> <i class="fa fa-angle-left pull-right"></i>
+        <a href="<?php echo $this->Url->build('/projects'); ?>">
+            <i class="fa fa-flask"></i> <span>Projects</span>
         </a>
-        <ul class="treeview-menu">
-            <li><a href="<?php echo $this->Url->build('/projects'); ?>"><i class="fa fa-circle-o"></i>List</a></li>
-            <li><a href="<?php echo $this->Url->build('/projects/add'); ?>"><i class="fa fa-circle-o"></i>New</a></li>
-        </ul>
     </li>
     <li class="treeview">
-        <a href="#">
+        <a href="<?php echo $this->Url->build('/activities?filter=uninvoiced'); ?>">
             <i class="fa fa-clock-o"></i> <span>Activities</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
@@ -39,17 +31,28 @@ if (file_exists($file)) {
         </ul>
     </li>
     <li class="treeview">
-        <a href="#">
-            <i class="fa fa-money"></i> <span>Invoices</span> <i class="fa fa-angle-left pull-right"></i>
+        <a href="<?php echo $this->Url->build('/invoices'); ?>">
+            <i class="fa fa-money"></i> <span>Invoices</span>
         </a>
-        <ul class="treeview-menu">
-            <li><a href="<?php echo $this->Url->build('/invoices'); ?>"><i class="fa fa-circle-o"></i>List</a></li>
-            <li><a href="<?php echo $this->Url->build('/invoices/add'); ?>"><i class="fa fa-circle-o"></i>New</a></li>
-        </ul>
     </li>
 
+    <li class="header">TIMERS</li>
+    <?php
+	foreach($user_timers as $timer)
+	{
+		$timer->start->setToStringFormat('yyyy-MM-dd HH:mm:ss');
+		echo "<li class='treeview'>
+			<div class='timerlabel'>".$timer->client->name."</div>
+			<div class='timerlabel'>".$timer->project->name."</div>
+			<div class='timer' data-date='".$timer->start."'></div>
+		</li>";
+	}
 
 
+    ?>
+    <script>
+	$(".timer").TimeCircles({animation: "ticks"});
+    </script>
 
     <li class="header">MAIN NAVIGATION</li>
     <li class="treeview">

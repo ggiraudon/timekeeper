@@ -18,10 +18,12 @@
     folder instead of downloading all of them to reduce the load. -->
     <?php echo $this->Html->css('skins/skin-blue'); ?>
     <?php echo $this->Html->css('timekeeper'); ?>
+    <?php echo $this->Html->css('TimeCircles'); ?>
 
     <?php echo $this->fetch('css'); ?>
     <!-- jQuery 2.1.4 -->
     <?php echo $this->Html->script('AdminLTE./plugins/jQuery/jQuery-2.1.4.min'); ?>
+    <?php echo $this->Html->script('TimeCircles'); ?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

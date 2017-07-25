@@ -79,13 +79,23 @@ class AppController extends Controller
      */
     public function beforeRender(Event $event)
     {
+
         //$this->viewBuilder()->theme('AdminLTE');
         if (!array_key_exists('_serialize', $this->viewVars) &&
             in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {
             $this->set('_serialize', true);
-        }
-        $this->set('theme', Configure::read('Theme'));
-	$this->set('_user', $this->request->Session()->read('Auth'));
+	}
+        
+	$this->set('theme', Configure::read('Theme'));
+
+	$User=$this->request->Session()->read('Auth');
+	if(!empty($User["User"]))
+	{
+		$this->loadModel('UserTimers');
+		$timers=$this->UserTimers->find('all')->contain(['Projects','Clients'])->where(["user_id"=>$User["User"]["id"]])->toArray();
+		$this->set('_user', $User);
+		$this->set('user_timers',$timers);
+	}
     }
 }
