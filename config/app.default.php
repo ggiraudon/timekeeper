@@ -342,5 +342,18 @@ return [
      */
     'Session' => [
         'defaults' => 'php',
+        'ini' => [
+                'session.cookie_lifetime' => 249200
+        ],
+        'cookie' => 'timekeeper',
+        'timeout' => 4320 // 3 days
     ],
+    'Stripe' => [
+        'TestSecret' => 'nothere',
+        'LiveSecret' => 'nothere',
+        'mode' => 'Test',
+        'currency' => 'USD',
+    ],
+
+
 ];

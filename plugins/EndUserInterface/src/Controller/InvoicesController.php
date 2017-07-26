@@ -49,6 +49,11 @@ class InvoicesController extends AppController
         $this->set('invoice', $invoice);
         $this->set('_serialize', ['invoice']);
     }
+    public function printview($id = null)
+    {
+	$this->view($id);
+    }
+
 
 
 	public function paypalPay($id = null)

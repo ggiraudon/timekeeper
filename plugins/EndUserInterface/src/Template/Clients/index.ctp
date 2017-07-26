@@ -87,8 +87,8 @@
                                     </th>
                                         
                                                                                                                                             
-                                <th>
-                                    <?php echo __('Actions'); ?>
+                                <th style="text-align:right;">
+                                    <?php echo __('Pay Invoice'); ?>
                                 </th>
                             </tr>
 
@@ -115,14 +115,13 @@
                                     <?= h($invoices->status) ?>
                                     </td>
                                                                                                             
-                                    <td class="actions">
+                                    <td class="actions" style="text-align:right;">
                     <?php if($invoices->status!="PAID"):?>
-                    <?= $this->Html->image("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-34px.png", ["alt"=>"PayPal", "url"=> ['controller' => 'Invoices', 'action' => 'paypalPay', $invoices->id]]) ?>
-                        <br/><center>OR</center>
-                        <form action="<?= $this->Url->build(["controller" => "Invoices","action" => "stripe-pay", $invoices->id])?>" method="POST">
+                    <?= $this->Html->image("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-34px.png", ["alt"=>"PayPal","height"=>"31px", "url"=> ['controller' => 'Invoices', 'action' => 'paypalPay', $invoices->id]]) ?>
+                        <form action="<?= $this->Url->build(["controller" => "Invoices","action" => "stripe-pay", $invoices->id])?>" method="POST" style="margin-top:5px;">
                           <script
                             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                            data-key="pk_XgbbAaibNCcXqGzB0dKkzmgMR3ue2"
+                            data-key="<?=$this->request->session()->read("Auth.User.company.stripe_key")?>"
                             data-name="Invoice"
                             data-description="<?= h($invoices->label) ?>"
                             data-amount="<?= h($invoices->total)*100 ?>"
@@ -206,8 +205,8 @@
                                     </th>
                                         
                                                                                                                                             
-                                <th>
-                                    <?php echo __('Actions'); ?>
+                                <th style="text-align:right;">
+                                    <?php echo __('Activate'); ?>
                                 </th>
                             </tr>
 
@@ -247,24 +246,22 @@
                                     </td>
 
 
-                <td class="actions" style="text-align:center;">
-                    <?php if($subscriptions->status!="ACTIVE"):?>
-                    <?= $this->Html->image("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-34px.png", ["alt"=>"PayPal", "url"=> ['controller' => 'Subscriptions', 'action' => 'paypalActivate', $subscriptions->id]]) ?>
-                        <br/><center>OR</center>
-                        <form action="<?= $this->Url->build(["controller" => "Subscriptions","action" => "stripe-activate", $subscriptions->id])?>" method="POST">
-                          <script
-                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                            data-key="pk_XgbbAaibNCcXqGzB0dKkzmgMR3ue2"
-                            data-name="Subscription"
-                            data-description="<?= h($subscriptions->name) ?>"
-                            data-amount="<?= h($subscriptions->amount)*100 ?>"
-                            data-bitcoin="false"
-                            data-label="Credit Card">
-                          </script>
-                        </form>
-
-                    <?php endif;?>
-
+                <td class="actions" style="text-align:right;">
+		<?php if($subscriptions->status!="ACTIVE"):?>
+			    <?= $this->Html->image("https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-34px.png", 
+				["alt"=>"PayPal","height"=>"31px", "url"=> ['controller' => 'Subscriptions', 'action' => 'paypalActivate', $subscriptions->id]]) ?>
+				<form action="<?= $this->Url->build(["controller" => "Subscriptions","action" => "stripe-activate", $subscriptions->id])?>" method="POST" style="margin-top:5px;">
+					<script
+					src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+					data-key="<?=$this->request->session()->read("Auth.User.company.stripe_key")?>"
+					data-name="Subscription"
+					data-description="<?= h($subscriptions->name) ?>"
+					data-amount="<?= h($subscriptions->amount)*100 ?>"
+					data-bitcoin="false"
+					data-label="Credit Card">
+					</script>
+				</form>
+		<?php endif;?>
 
                 </td>
 

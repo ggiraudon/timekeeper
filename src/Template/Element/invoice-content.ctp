@@ -34,9 +34,9 @@ $nf = new \NumberFormatter( null, \NumberFormatter::CURRENCY);
             <div class="col-sm-4 invoice-col">
               <b>Invoice <?= $invoice['label']?></b><br>
               <br>
-              <b>Order ID:</b> <?= $invoice['order_id']?><br>
+              <?php if(!empty($invoice['order_id'])) : ?><b>Order ID:</b> <?= $invoice['order_id']?><br><?php endif; ?>
               <b>Payment Due:</b>  <?= $invoice['payment_due']?><br>
-              <b>Account:</b>  <?= $invoice['account_no']?>
+              <?php if(!empty($invoice['account_no'])) : ?><b>Account:</b>  <?= $invoice['account_no']?><?php endif; ?>
             </div>
             <!-- /.col -->
         </div>
