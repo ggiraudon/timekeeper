@@ -36,7 +36,10 @@
 		<dd>
 		<?= $this->Text->autoParagraph(h($client->billing_address)); ?>
 		</dd>
-                                                            </dl>
+                </dl>
+		<div>
+                    <?= $this->Html->link("Logout" , ['controller' => 'clients', 'action' => 'logout'], ['class'=>'btn btn-info']) ?>
+		</div>
             </div>
             <!-- /.box-body -->
         </div>
@@ -308,13 +311,7 @@
                                     <th>
                                     Notes
                                     </th>
-                                    <th>
-                                    Created
-                                    </th>
-                                    <th>
-                                    Modified 
-                                    </th>
-                                <th>
+                               <th>
                                     <?php echo __('Actions'); ?>
                                 </th>
                             </tr>
@@ -322,8 +319,8 @@
                             <?php foreach ($client->activities as $activities): ?>
                                 <tr>
                                                                         
-                                    <td>
-                                    <?= h($activities->date_time) ?>
+                                    <td nowrap>
+                                    <?= h($activities->date_time->i18nFormat('yyyy-MM-dd')) ?>
                                     </td>
                                    <td>
                                     <?= h($activities->billable_time) ?>
@@ -337,14 +334,7 @@
                                     <?= h($activities->notes) ?>
                                     </td>
                                                                         
-                                    <td>
-                                    <?= h($activities->created) ?>
-                                    </td>
-                                                                        
-                                    <td>
-                                    <?= h($activities->modified) ?>
-                                    </td>
-                                                                                                            
+                                                                                                           
                                     <td class="actions">
                                     </td>
                                 </tr>

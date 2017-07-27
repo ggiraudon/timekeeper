@@ -18,7 +18,12 @@ class AppController extends BaseController
 			'controller' => 'Clients',
 			'action' => 'login'
 			]);
-
+	$this->Auth->config(
+			'logoutRedirect' , [
+			'controller' => 'Clients',
+			'action' => 'login'
+			]);
+	
 	$this->Auth->config(
 			'authError' , 'Did you really think you are allowed to see that?'
 			);
@@ -56,16 +61,14 @@ class AppController extends BaseController
 					$company->paypal_secret
 					)
 				);
-
 		$this->apiContext->setConfig(
 				array(
+					'mode' => $company->paypal_mode,
 					'log.LogEnabled' => true,
 					'log.FileName' => '/tmp/PayPal.log',
 					'log.LogLevel' => 'DEBUG'
 				     )
 				);
-
-
 
 	}
 

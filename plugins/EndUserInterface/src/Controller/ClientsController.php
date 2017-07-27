@@ -25,7 +25,12 @@ class ClientsController extends AppController
     {
 	$id=$this->Auth->user('id');
         $client = $this->Clients->get($id, [
-            'contain' => ['Companies', 'Activities', 'Invoices', 'Projects', 'Subscriptions', 'UserTimers']
+            'contain' => ['Companies', 
+			  'Activities' => function ($q) { return $q->where(['Activities.invoice_id IS NULL'])->order(['created'=>'DESC']); },
+			  'Invoices' => [ 'sort' => ['Invoices.payment_due' => 'DESC' ]], 
+			  'Projects', 
+			  'Subscriptions' 
+			  ]
         ]);
         $this->set('client', $client);
         $this->set('_serialize', ['client']);
