@@ -37,7 +37,7 @@ class ClientsTable extends Table
         $this->table('clients');
         $this->displayField('name');
         $this->primaryKey('id');
-
+	$this->addBehavior('CompanyFilter');
         $this->hasMany('Activities', [
             'foreignKey' => 'client_id'
         ]);
