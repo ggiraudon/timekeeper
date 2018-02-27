@@ -47,7 +47,10 @@ class UsersTable extends Table
             'foreignKey' => 'company_id',
             'joinType' => 'INNER'
         ]);
-
+        $this->hasMany('UserTimers', [
+            'foreignKey' => 'user_id'
+        ]);
+ 
     }
 
     /**

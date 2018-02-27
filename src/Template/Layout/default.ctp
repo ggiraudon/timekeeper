@@ -24,6 +24,7 @@
     <!-- jQuery 2.1.4 -->
     <?php echo $this->Html->script('AdminLTE./plugins/jQuery/jQuery-2.1.4.min'); ?>
     <?php echo $this->Html->script('TimeCircles'); ?>
+    <?php echo $this->Html->script('utils'); ?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

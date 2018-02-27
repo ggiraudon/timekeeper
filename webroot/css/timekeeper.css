@@ -1,3 +1,22 @@
 label { min-width:100px; }
+
+
+/* Timer rules for sidebar */
 .timer { color: #eee; }
 .timerlabel { color: #eee; text-align: center;}
+.timer-description { display:none;}
+.timercontrols { color: #eee; font-size: 16px; text-align: right; margin-right:10px; margin-bottom:-20px;}
+.timercontrol:hover { color: #3c8dbc; }
+.sidebar-mini.sidebar-collapse .sidebar-menu > li > .timercontrols { display: none !important; }
+.sidebar-mini.sidebar-collapse .sidebar-menu > li > .timerlabel { display: none !important; }
+.sidebar-mini.sidebar-collapse .sidebar-menu > li > .timer { display: none !important; }
+
+
+
+/* Bring modal and backdrop a bit lower */
+.modal-backdrop {
+	z-index: 700;
+}
+.modal-dialog {
+    margin-top: 350px;
+}

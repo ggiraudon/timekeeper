@@ -12,17 +12,19 @@
     ],
     "require": {
         "php": ">=5.5.9",
-        "cakephp/cakephp": "3.3.*",
+        "cakephp/cakephp": "3.5.*",
         "mobiledetect/mobiledetectlib": "2.*",
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
         "maiconpinto/cakephp-adminlte-theme": "^1.0",
-        "friendsofcake/crud": "~4.0",
+        "friendsofcake/crud": "^5.3",
         "admad/cakephp-jwt-auth": "^2.0",
         "friendsofcake/cakepdf": "^3.2",
         "hashmode/cakephp-stripe": "dev-master",
         "paypal/rest-api-sdk-php": "*",
-        "stripe/stripe-php": "^4.10"
+        "stripe/stripe-php": "^4.10",
+        "friendsofcake/crud-json-api": "^0.2.2",
+        "friendsofcake/search": "^4.2"
     },
     "require-dev": {
         "psy/psysh": "@stable",

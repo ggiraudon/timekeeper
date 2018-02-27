@@ -19,6 +19,8 @@ if (file_exists($file)) {
 
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <?php echo $this->element('aside/sidebar-menu'); ?>
+        <?php echo $this->element('aside/sidebar-timers'); ?>
+        <?php echo $this->element('aside/sidebar-demo'); ?>
 
     </section>
     <!-- /.sidebar -->

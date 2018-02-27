@@ -32,7 +32,7 @@ if (file_exists($file)) {
                             <li><!-- start message -->
                                 <a href="#">
                                     <div class="pull-left">
-                                        <?php echo $this->Html->image('user2-160x160.jpg', array('class' => 'img-circle', 'alt' => 'User Image')); ?>
+                                        <?php echo $this->Html->image('user9-160x160.jpg', array('class' => 'img-circle', 'alt' => 'User Image')); ?>
                                     </div>
                                     <h4>
                                         Support Team
@@ -103,7 +103,7 @@ if (file_exists($file)) {
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <?php echo $this->Html->image('user2-160x160.jpg', array('class' => 'user-image', 'alt' => 'User Image')); ?>
+                    <?php echo $this->Html->image('user9-160x160.jpg', array('class' => 'user-image', 'alt' => 'User Image')); ?>
                     <span class="hidden-xs"><?= $_user['User']['firstname']?> <?= $_user['User']['lastname']?></span>
                 </a>
                 <ul class="dropdown-menu">

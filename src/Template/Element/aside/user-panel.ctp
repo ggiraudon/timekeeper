@@ -9,7 +9,7 @@ if (file_exists($file)) {
 ?>
 <div class="user-panel">
     <div class="pull-left image">
-        <?php echo $this->Html->image('user2-160x160.jpg', array('class' => 'img-circle', 'alt' => 'User Image')); ?>
+        <?php echo $this->Html->image('user9-160x160.jpg', array('class' => 'img-circle', 'alt' => 'User Image')); ?>
     </div>
     <div class="pull-left info">
         <p><?= $_user['User']['firstname']?> <?= $_user['User']['lastname']?></p>

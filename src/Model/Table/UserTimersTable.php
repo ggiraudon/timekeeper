@@ -68,10 +68,10 @@ class UserTimersTable extends Table
             ->requirePresence('description', 'create')
             ->notEmpty('description');
 
-        $validator
-            ->dateTime('start')
-            ->requirePresence('start', 'create')
-            ->notEmpty('start');
+//        $validator
+//            ->dateTime('start')
+//            ->requirePresence('start', 'create')
+//            ->notEmpty('start');
 
         return $validator;
     }

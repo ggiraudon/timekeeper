@@ -76,11 +76,6 @@ class ActivitiesTable extends Table
             ->requirePresence('notes', 'create')
             ->notEmpty('notes');
 
-        $validator
-            ->dateTime('date_time')
-            ->requirePresence('date_time', 'create')
-            ->notEmpty('date_time');
-
         return $validator;
     }
 

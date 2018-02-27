@@ -49,6 +49,8 @@ Router::prefix('api', function ($routes) {
     $routes->resources('Projects');
     $routes->resources('Activities');
     $routes->resources('Invoices');
+    $routes->resources('Users');
+    $routes->resources('UserTimers');
     $routes->fallbacks('InflectedRoute');
 });
 
