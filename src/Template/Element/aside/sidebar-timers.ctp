@@ -153,6 +153,9 @@ if (file_exists($file)) {
 		});
 
 		$("#stop-timer").modal('toggle');
+		
+		$("#ts_save_btn").unbind();
+		$("#ts_cancel_btn").unbind();
 		$("#ts_save_btn").click(function(){
 
 			addActivity(	$("#ts_user_id").val(),
@@ -178,10 +181,11 @@ if (file_exists($file)) {
 		});
 
 		$("#ts_cancel_btn").click(function(){
-				deleteTimer(timer_id,function(data){
+				$("#stop-timer").modal('hide');
+				var tid=timer_id;
+				deleteTimer(tid,function(data){
 					$('#'+tmr_id).TimeCircles().stop();
-					$('#twr-'+timer_id).remove();
-					$("#stop-timer").modal('hide');
+					$('#twr-'+tid).remove();
 				});
 
 		});
