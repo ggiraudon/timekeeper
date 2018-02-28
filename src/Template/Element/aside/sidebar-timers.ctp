@@ -87,7 +87,7 @@ if (file_exists($file)) {
 		var tmr_client_id=tmr_container.children(".timer-client").first().attr('data-id');
 		var tmr_project_id=tmr_container.children(".timer-project").first().attr('data-id');
 		var tmr_description=tmr_container.children(".timer-description").first().html();
-		var tmr_billable = Math.round(Math.abs($('#'+tmr_id).TimeCircles().getTime())/60,0);
+		var tmr_billable = Math.round(Math.abs($('#'+tmr_id).TimeCircles().getTime())/3600*4,0)/4;
 
 		$("#ts_notes").val(tmr_description);
 		$("#ts_billable_time").val(tmr_billable);
