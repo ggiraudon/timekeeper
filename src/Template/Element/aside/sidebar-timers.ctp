@@ -16,7 +16,7 @@ if (file_exists($file)) {
 		$playpause="fa-pause-circle";
 		$status="running";
 		$utc_start=gmdate("U",$timer->start->toUnixString());
-		$counter=$utc_now-$utc_start+$timer->add;
+		$counter=abs($utc_now-$utc_start+$timer->add);
 		if($timer->paused==1)
 		{
 			$playpause="fa-play-circle";
