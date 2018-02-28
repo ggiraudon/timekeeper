@@ -54,6 +54,9 @@ class ClientsController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
+		// Weird patch to bypass auth problem from plugin apparently creating session early
+		$this->request->session()->destroy();
+		// End of weird patch
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
