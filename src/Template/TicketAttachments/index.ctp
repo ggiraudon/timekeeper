@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Users
+    Ticket Attachments
     <div class="pull-right"><?= $this->Html->link(__('New'), ['action' => 'add'], ['class'=>'btn btn-success btn-xs']) ?></div>
   </h1>
 </section>
@@ -12,7 +12,7 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title"><?= __('List of') ?> Users</h3>
+          <h3 class="box-title"><?= __('List of') ?> Ticket Attachments</h3>
           <div class="box-tools">
             <form action="<?php echo $this->Url->build(); ?>" method="POST">
               <div class="input-group input-group-sm"  style="width: 180px;">
@@ -29,27 +29,19 @@
           <table class="table table-hover">
             <tr>
               <th><?= $this->Paginator->sort('id') ?></th>
-              <th><?= $this->Paginator->sort('company_id') ?></th>
-              <th><?= $this->Paginator->sort('username') ?></th>
-              <th><?= $this->Paginator->sort('password') ?></th>
-              <th><?= $this->Paginator->sort('email') ?></th>
-              <th><?= $this->Paginator->sort('role') ?></th>
-              <th><?= $this->Paginator->sort('firstname') ?></th>
+              <th><?= $this->Paginator->sort('ticket_id') ?></th>
+              <th><?= $this->Paginator->sort('file_name') ?></th>
               <th><?= __('Actions') ?></th>
             </tr>
-            <?php foreach ($users as $user): ?>
+            <?php foreach ($ticketAttachments as $ticketAttachment): ?>
               <tr>
-                <td><?= h($user->id) ?></td>
-                <td><?= $user->has('company') ? $this->Html->link($user->company->name, ['controller' => 'Companies', 'action' => 'view', $user->company->id]) : '' ?></td>
-                <td><?= h($user->username) ?></td>
-                <td><?= h($user->password) ?></td>
-                <td><?= h($user->email) ?></td>
-                <td><?= h($user->role) ?></td>
-                <td><?= h($user->firstname) ?></td>
+                <td><?= h($ticketAttachment->id) ?></td>
+                <td><?= $ticketAttachment->has('ticket') ? $this->Html->link($ticketAttachment->ticket->id, ['controller' => 'Tickets', 'action' => 'view', $ticketAttachment->ticket->id]) : '' ?></td>
+                <td><?= h($ticketAttachment->file_name) ?></td>
                 <td class="actions" style="white-space:nowrap">
-                  <?= $this->Html->link(__('View'), ['action' => 'view', $user->id], ['class'=>'btn btn-info btn-xs']) ?>
-                  <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id], ['class'=>'btn btn-warning btn-xs']) ?>
-                  <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs']) ?>
+                  <?= $this->Html->link(__('View'), ['action' => 'view', $ticketAttachment->id], ['class'=>'btn btn-info btn-xs']) ?>
+                  <?= $this->Html->link(__('Edit'), ['action' => 'edit', $ticketAttachment->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                  <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $ticketAttachment->id], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs']) ?>
                 </td>
               </tr>
             <?php endforeach; ?>

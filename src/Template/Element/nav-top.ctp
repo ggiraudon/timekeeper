@@ -110,7 +110,10 @@ if (file_exists($file)) {
                   <!-- Menu Footer-->
                     <li class="user-footer">
                         <div class="pull-left">
-                            <a href="#" class="btn btn-default btn-flat">Profile</a>
+                            <a href="/companies/edit" class="btn btn-default btn-flat">Company Profile</a>
+                        </div>
+                        <div class="pull-left">
+                            <a href="/users/edit" class="btn btn-default btn-flat">User Profile</a>
                         </div>
                         <div class="pull-right">
                             <a href="/users/logout" class="btn btn-default btn-flat">Sign out</a>

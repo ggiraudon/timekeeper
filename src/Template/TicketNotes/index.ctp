@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Companies
+    Ticket Notes
     <div class="pull-right"><?= $this->Html->link(__('New'), ['action' => 'add'], ['class'=>'btn btn-success btn-xs']) ?></div>
   </h1>
 </section>
@@ -12,7 +12,7 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title"><?= __('List of') ?> Companies</h3>
+          <h3 class="box-title"><?= __('List of') ?> Ticket Notes</h3>
           <div class="box-tools">
             <form action="<?php echo $this->Url->build(); ?>" method="POST">
               <div class="input-group input-group-sm"  style="width: 180px;">
@@ -29,19 +29,17 @@
           <table class="table table-hover">
             <tr>
               <th><?= $this->Paginator->sort('id') ?></th>
-              <th><?= $this->Paginator->sort('name') ?></th>
-              <th><?= $this->Paginator->sort('stripe_key') ?></th>
+              <th><?= $this->Paginator->sort('ticket_id') ?></th>
               <th><?= __('Actions') ?></th>
             </tr>
-            <?php foreach ($companies as $company): ?>
+            <?php foreach ($ticketNotes as $ticketNote): ?>
               <tr>
-                <td><?= h($company->id) ?></td>
-                <td><?= h($company->name) ?></td>
-                <td><?= h($company->stripe_key) ?></td>
+                <td><?= h($ticketNote->id) ?></td>
+                <td><?= $ticketNote->has('ticket') ? $this->Html->link($ticketNote->ticket->id, ['controller' => 'Tickets', 'action' => 'view', $ticketNote->ticket->id]) : '' ?></td>
                 <td class="actions" style="white-space:nowrap">
-                  <?= $this->Html->link(__('View'), ['action' => 'view', $company->id], ['class'=>'btn btn-info btn-xs']) ?>
-                  <?= $this->Html->link(__('Edit'), ['action' => 'edit', $company->id], ['class'=>'btn btn-warning btn-xs']) ?>
-                  <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $company->id], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs']) ?>
+                  <?= $this->Html->link(__('View'), ['action' => 'view', $ticketNote->id], ['class'=>'btn btn-info btn-xs']) ?>
+                  <?= $this->Html->link(__('Edit'), ['action' => 'edit', $ticketNote->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                  <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $ticketNote->id], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs']) ?>
                 </td>
               </tr>
             <?php endforeach; ?>

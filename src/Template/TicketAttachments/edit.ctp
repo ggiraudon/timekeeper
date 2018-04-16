@@ -1,7 +1,12 @@
+<?php
+/**
+  * @var \App\View\AppView $this
+  */
+?>
 <section class="content-header">
   <h1>
-    User
-    <small><?= __('Add') ?></small>
+    Ticket Attachment
+    <small><?= __('Edit') ?></small>
   </h1>
   <ol class="breadcrumb">
     <li>
@@ -22,17 +27,12 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <?= $this->Form->create($user, array('role' => 'form')) ?>
+        <?= $this->Form->create($ticketAttachment, array('role' => 'form')) ?>
           <div class="box-body">
           <?php
-            echo $this->Form->input('company_id', ['options' => $companies]);
-            echo $this->Form->input('username');
-            echo $this->Form->input('password');
-            echo $this->Form->input('email');
-            echo $this->Form->input('role');
-            echo $this->Form->input('firstname');
-            echo $this->Form->input('lastname');
-            echo $this->Form->input('active');
+            echo $this->Form->input('ticket_id', ['options' => $tickets]);
+            echo $this->Form->input('file_name');
+            echo $this->Form->input('file_contents');
           ?>
           </div>
           <!-- /.box-body -->

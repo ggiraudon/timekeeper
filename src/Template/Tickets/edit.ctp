@@ -1,7 +1,12 @@
+<?php
+/**
+  * @var \App\View\AppView $this
+  */
+?>
 <section class="content-header">
   <h1>
-    User
-    <small><?= __('Add') ?></small>
+    Ticket
+    <small><?= __('Edit') ?></small>
   </h1>
   <ol class="breadcrumb">
     <li>
@@ -22,17 +27,16 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <?= $this->Form->create($user, array('role' => 'form')) ?>
+        <?= $this->Form->create($ticket, array('role' => 'form')) ?>
           <div class="box-body">
           <?php
             echo $this->Form->input('company_id', ['options' => $companies]);
-            echo $this->Form->input('username');
-            echo $this->Form->input('password');
-            echo $this->Form->input('email');
-            echo $this->Form->input('role');
-            echo $this->Form->input('firstname');
-            echo $this->Form->input('lastname');
-            echo $this->Form->input('active');
+            echo $this->Form->input('ticket_number');
+            echo $this->Form->input('ticket_date');
+            echo $this->Form->input('from_email');
+            echo $this->Form->input('ticket_title');
+            echo $this->Form->input('status');
+            echo $this->Form->input('user_id', ['options' => $users, 'empty' => true]);
           ?>
           </div>
           <!-- /.box-body -->

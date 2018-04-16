@@ -33,7 +33,21 @@
             echo $this->Form->input('name');
             echo $this->Form->input('billing_address');
             echo $this->Form->input('stripe_key');
+            echo $this->Form->input('stripe_secret');
             echo $this->Form->input('stripe_mode');
+            echo $this->Form->input('paypal_client_id',['type'=>'text']);
+            echo $this->Form->input('paypal_secret');
+            echo $this->Form->input('paypal_mode');
+            echo $this->Form->input('invoice_number_format');
+            echo $this->Form->input('next_invoice_number');
+            echo $this->Form->input('next_ticket_number');
+            echo $this->Form->input('imap_server');
+            echo $this->Form->input('imap_port');
+            echo $this->Form->input('imap_options');
+            echo $this->Form->input('smtp_server');
+            echo $this->Form->input('smtp_port');
+            echo $this->Form->input('mail_username');
+            echo $this->Form->input('mail_password',['type'=>'password']);
           ?>
           </div>
           <!-- /.box-body -->

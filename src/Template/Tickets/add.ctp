@@ -1,6 +1,6 @@
 <section class="content-header">
   <h1>
-    Company
+    Ticket
     <small><?= __('Add') ?></small>
   </h1>
   <ol class="breadcrumb">
@@ -22,13 +22,16 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <?= $this->Form->create($company, array('role' => 'form')) ?>
+        <?= $this->Form->create($ticket, array('role' => 'form')) ?>
           <div class="box-body">
           <?php
-            echo $this->Form->input('name');
-            echo $this->Form->input('billing_address');
-            echo $this->Form->input('stripe_key');
-            echo $this->Form->input('stripe_mode');
+            echo $this->Form->input('company_id', ['options' => $companies]);
+            echo $this->Form->input('ticket_number');
+            echo $this->Form->input('ticket_date');
+            echo $this->Form->input('from_email');
+            echo $this->Form->input('ticket_title');
+            echo $this->Form->input('status');
+            echo $this->Form->input('user_id', ['options' => $users, 'empty' => true]);
           ?>
           </div>
           <!-- /.box-body -->
