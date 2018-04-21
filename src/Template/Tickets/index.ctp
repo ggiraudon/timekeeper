@@ -50,7 +50,7 @@
 		    <?php foreach ($tickets as $ticket): ?>
 		      <tr>
 			<td><input type="checkbox"></td>
-			<td class="mailbox-star"><a href="#"><i class="fa fa-star<?=$ticket->status=="NEW"?"":"-o" ?> text-yellow"></i></a></td>
+			<td class="mailbox-star"><a href="#"><i class="fa fa-star<?=$ticket->status=="NEW"?"":"-o" ?> text-yellow"></i>#<?= h($ticket->ticket_number) ?></a></td>
 			<td class="mailbox-name"><?= h($ticket->from_email) ?></td>
 			<td class="mailbox-subject"><a href="<?php echo $this->Url->build(array('controller' => 'tickets', 'action' => 'view', $ticket->id)); ?>"><?= h($ticket->ticket_title) ?></a></td>
 			<td class="mailbox-attachment"></td>

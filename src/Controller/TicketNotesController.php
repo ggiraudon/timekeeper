@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Mailer\Email;
 
 /**
  * TicketNotes Controller
@@ -51,19 +52,54 @@ class TicketNotesController extends AppController
      */
     public function add()
     {
+	$ticket_id=$this->request->data['ticket_id'];
+	$this->loadModel('Tickets');
+        $ticket = $this->Tickets->get($ticket_id, [ 'contain' => [] ]);
         $ticketNote = $this->TicketNotes->newEntity();
-        if ($this->request->is('post')) {
+        if ($this->request->is('put')) {
             $ticketNote = $this->TicketNotes->patchEntity($ticketNote, $this->request->data);
+	    $ticketNote->content = $ticketNote->content_plain;
             if ($this->TicketNotes->save($ticketNote)) {
                 $this->Flash->success(__('The {0} has been saved.', 'Ticket Note'));
-                return $this->redirect(['action' => 'index']);
+		if($this->request->data['notify_client']==1)
+		if($company=$this->Tickets->Companies->get($ticket->company_id))
+		{	
+			$username = $company->mail_username;
+			$password = $company->mail_password;
+			Email::configTransport('outbound', [
+			    'host' => $company->smtp_server,
+			    'port' => $company->smtp_port,
+			    'username' => $username,
+			    'password' => $password,
+			    'className' => 'Smtp',
+			    'tls' => true
+			]);
+			$to = $company->ticket_mailbox;
+			$sp = explode("@",$to);
+			$tomailbox = $sp[0];
+			$tohost = $sp[1];
+
+			$message = $ticketNote->content_plain;
+			$title = '[#'.$ticket->ticket_number.'] UP:'.$ticket->ticket_title;
+			$reply_address="$tomailbox+{$ticket->id}@$tohost";
+			$email = new Email();
+			$email
+			    ->transport('outbound')
+			    ->emailFormat('text')
+			    ->subject($title)
+			    ->to($ticket->from_email)
+			    ->from($reply_address)
+			    ->replyTo($reply_address)
+			    ->send($message);
+
+		}
+                return $this->redirect(['controller' => 'tickets' , 'action' => 'view', $ticket_id]);
             } else {
                 $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Ticket Note'));
             }
         }
-        $tickets = $this->TicketNotes->Tickets->find('list', ['limit' => 200]);
-        $this->set(compact('ticketNote', 'tickets'));
-        $this->set('_serialize', ['ticketNote']);
+	die('bar');
+        return $this->redirect(['controller' => 'tickets' , 'action' => 'view', $ticket_id]);
     }
 
     /**

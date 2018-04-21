@@ -21,6 +21,12 @@ if (file_exists($file)) {
         </a>
     </li>
     <li class="treeview">
+        <a href="<?php echo $this->Url->build('/tickets'); ?>">
+            <i class="fa fa-ticket"></i> <span>Tickets</span>
+        </a>
+    </li>
+ 
+    <li class="treeview">
         <a href="<?php echo $this->Url->build('/activities?filter=uninvoiced'); ?>">
             <i class="fa fa-clock-o"></i> <span>Activities</span> <i class="fa fa-angle-left pull-right"></i>
         </a>

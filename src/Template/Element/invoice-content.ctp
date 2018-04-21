@@ -95,10 +95,10 @@ $nf = new \NumberFormatter( null, \NumberFormatter::CURRENCY);
         <!-- accepted payments column -->
         <div class="col-xs-6">
             <p class="lead">Payment Methods:</p>
-            <?php echo $this->Html->image('credit/visa.png', array('alt' => 'Visa')); ?>
-            <?php echo $this->Html->image('credit/mastercard.png', array('alt' => 'Mastercard')); ?>
-            <?php echo $this->Html->image('credit/american-express.png', array('alt' => 'American Express')); ?>
-            <?php echo $this->Html->image('credit/paypal2.png', array('alt' => 'Paypal')); ?>
+            <?php echo $this->Html->image('credit/visa.png', array('fullBase' => true,'alt' => 'Visa')); ?>
+            <?php echo $this->Html->image('credit/mastercard.png', array('fullBase' => true,'alt' => 'Mastercard')); ?>
+            <?php echo $this->Html->image('credit/american-express.png', array('fullBase' => true,'alt' => 'American Express')); ?>
+            <?php echo $this->Html->image('credit/paypal2.png', array('fullBase' => true,'alt' => 'Paypal')); ?>
 
             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
             <?= $invoice['comments']?>

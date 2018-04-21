@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
+use Cake\Core\Configure;
 
 /**
  * Invoices Controller
@@ -11,6 +13,11 @@ use App\Controller\AppController;
 class InvoicesController extends AppController
 {
 
+	public function beforeFilter(Event $event)
+	{
+		parent::beforeFilter($event);
+		$this->Auth->allow(['printview']);
+	}
     /**
      * Index method
      *
@@ -19,7 +26,8 @@ class InvoicesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Clients']
+            'contain' => ['Clients'],
+	    'order' => ['Invoices.invoice_date' => 'DESC']
         ];
         $invoices = $this->paginate($this->Invoices);
 
@@ -40,6 +48,8 @@ class InvoicesController extends AppController
             'contain' => ['Clients', 'Activities' => ['Projects']]
         ]);
 	$company = $this->Auth->user('company');
+	$pdf_filename  = "invoice-".$invoice->label.".pdf";
+	Configure::write('CakePdf.filename',$pdf_filename);
         $this->set('invoice', $invoice);
         $this->set('company', $company);
         $this->set('_serialize', ['invoice','company']);

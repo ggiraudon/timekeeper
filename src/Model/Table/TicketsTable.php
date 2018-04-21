@@ -54,7 +54,8 @@ class TicketsTable extends Table
             'foreignKey' => 'ticket_id'
         ]);
         $this->hasMany('TicketNotes', [
-            'foreignKey' => 'ticket_id'
+            'foreignKey' => 'ticket_id',
+	    'sort' => 'TicketNotes.created DESC'
         ]);
     }
 

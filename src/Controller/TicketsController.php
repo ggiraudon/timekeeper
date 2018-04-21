@@ -37,7 +37,7 @@ class TicketsController extends AppController
     public function view($id = null)
     {
         $ticket = $this->Tickets->get($id, [
-            'contain' => ['Companies', 'Users', 'TicketAttachments', 'TicketNotes']
+            'contain' => ['Companies', 'Users', 'TicketAttachments', 'TicketNotes' ]
         ]);
 
         $this->set('ticket', $ticket);
@@ -83,7 +83,7 @@ class TicketsController extends AppController
             $ticket = $this->Tickets->patchEntity($ticket, $this->request->data);
             if ($this->Tickets->save($ticket)) {
                 $this->Flash->success(__('The {0} has been saved.', 'Ticket'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view',$ticket->id]);
             } else {
                 $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Ticket'));
             }

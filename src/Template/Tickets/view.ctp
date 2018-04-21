@@ -20,45 +20,25 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <dl class="dl-horizontal">
-                                                                                                                <dt><?= __('Id') ?></dt>
-                                        <dd>
-                                            <?= h($ticket->id) ?>
-                                        </dd>
-                                                                                                                                                    <dt><?= __('Company') ?></dt>
-                                <dd>
-                                    <?= $ticket->has('company') ? $ticket->company->name : '' ?>
-                                </dd>
-                                                                                                                        <dt><?= __('From Email') ?></dt>
-                                        <dd>
-                                            <?= h($ticket->from_email) ?>
-                                        </dd>
-                                                                                                                                                            <dt><?= __('Ticket Title') ?></dt>
-                                        <dd>
-                                            <?= h($ticket->ticket_title) ?>
-                                        </dd>
-                                                                                                                                                            <dt><?= __('Status') ?></dt>
-                                        <dd>
-                                            <?= h($ticket->status) ?>
-                                        </dd>
-                                                                                                                                                    <dt><?= __('User') ?></dt>
-                                <dd>
-                                    <?= $ticket->has('user') ? $ticket->user->id : '' ?>
-                                </dd>
-                                                                                                
-                                            
-                                                                                                        <dt><?= __('Ticket Number') ?></dt>
-                                <dd>
-                                    <?= $this->Number->format($ticket->ticket_number) ?>
-                                </dd>
-                                                                                                
-                                                                                                        <dt><?= __('Ticket Date') ?></dt>
-                                <dd>
-                                    <?= h($ticket->ticket_date) ?>
-                                </dd>
-                                                                                                                                                                                                            
-                                            
-                                    </dl>
+		<?= $this->Form->create($ticket, array('role' => 'form','url'=>'tickets/edit/'.$ticket->id)) ?>
+		  <div class="box-body">
+		  <?php 
+                    echo "<div>"; 
+			echo $this->Form->label('ticket_number'); echo h($ticket->ticket_number); 
+		    echo "</div>";
+		    echo "<div>"; 
+			echo $this->Form->label('ticket_date'); echo h($ticket->ticket_date); 
+		    echo "</div>";
+		    echo $this->Form->input('from_email',['readonly'=>true,'style'=>'width:300px;border:none;']);
+		    echo $this->Form->input('ticket_title',['style'=>'width:300px;']);
+		    echo $this->Form->input('status',['options'=>['NEW'=>'NEW','OPEN'=>'OPEN','WAITING'=>'WAITING','STALLED'=>'STALLED','CLOSED'=>'CLOSED']]);
+		  ?>
+		  </div>
+		  <!-- /.box-body -->
+		  <div class="box-footer">
+		    <?= $this->Form->button(__('Save')) ?>
+		  </div>
+		<?= $this->Form->end() ?>
             </div>
             <!-- /.box-body -->
         </div>
@@ -67,6 +47,37 @@
     <!-- ./col -->
 </div>
 <!-- div -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <i class="fa fa-envelope"></i>
+                <h3 class="box-title"><?php echo __('Add notes'); ?></h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+		<?= $this->Form->create($ticket->ticket_notes, array('role' => 'form','url'=>'ticketNotes/add')) ?>
+		  <div class="box-body">
+		  <?php
+		    echo $this->Form->hidden('ticket_id',['value'=>$ticket->id]);
+		    echo $this->Form->input('content_plain',['style'=>'width:300px;']);
+		    echo $this->Form->input('notify_client',['type'=>'checkbox']);
+		  ?>
+		  </div>
+		  <!-- /.box-body -->
+		  <div class="box-footer">
+		    <?= $this->Form->button(__('Add')) ?>
+		  </div>
+		<?= $this->Form->end() ?>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- ./col -->
+</div>
+<!-- div -->
+
 
     <div class="row">
         <div class="col-xs-12">
@@ -92,9 +103,7 @@
 				 <tr>                                       
                                     <td>
                                     	<?= h($ticketNotes->created) ?>
-					<pre>
-					<?=$ticketNotes->content_plain?>
-					</pre>
+					<pre><?=$ticketNotes->content_plain?></pre>
                                     </td>
                                                                                                             
                                </tr>
