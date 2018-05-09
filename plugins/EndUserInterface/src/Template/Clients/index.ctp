@@ -352,4 +352,71 @@
         </div>
     </div>
                <!-- /.box-body -->
+     <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <i class="fa fa-ticket"></i>
+                    <h3 class="box-title"><?= __('Tickets') ?></h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+
+                <?php if (!empty($client->tickets)): ?>
+
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                                                    
+                                    <th>
+                                    Ticket Number
+                                    </th>
+                                    <th>
+                                    From
+                                    </th>
+                                    <th>
+                                    Title
+                                    </th>
+                                    <th>
+                                    Status
+                                    </th>
+                               <th>
+                                    <?php echo __('Actions'); ?>
+                                </th>
+                            </tr>
+
+                            <?php foreach ($client->tickets as $tickets): ?>
+                                <tr>
+                                                                        
+                                    <td nowrap>
+                                    <?= $this->Html->link(h($tickets->ticket_number) , ['controller' => 'Tickets', 'action' => 'view', $tickets->id], ['class'=>'btn btn-info btn-xs']) ?>
+                                    </td>
+                                   <td>
+                                    <?= h($tickets->from_email) ?>
+                                    </td>
+                                   <td>
+                                    <?= h($tickets->ticket_title) ?>
+                                    </td>
+                                                                        
+                                    <td>
+                                    <?= h($tickets->status) ?>
+                                    </td>
+                                                                        
+                                    <td class="actions">
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                                    
+                        </tbody>
+                    </table>
+
+                <?php endif; ?>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+
 </section>

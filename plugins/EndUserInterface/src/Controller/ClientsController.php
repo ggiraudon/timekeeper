@@ -29,7 +29,8 @@ class ClientsController extends AppController
 			  'Activities' => function ($q) { return $q->where(['Activities.invoice_id IS NULL'])->order(['created'=>'DESC']); },
 			  'Invoices' => [ 'sort' => ['Invoices.payment_due' => 'DESC' ]], 
 			  'Projects', 
-			  'Subscriptions' 
+			  'Subscriptions',
+			  'Tickets' => ['TicketAttachments', 'TicketNotes','Activities']
 			  ]
         ]);
         $this->set('client', $client);

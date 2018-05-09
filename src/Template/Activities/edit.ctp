@@ -25,13 +25,12 @@
         <?= $this->Form->create($activity, array('role' => 'form')) ?>
           <div class="box-body">
           <?php
-            echo $this->Form->input('user_id', ['options' => $users]);
+            echo $this->Form->hidden('user_id', ['value' => $activity->user_id]);
             echo $this->Form->input('client_id', ['options' => $clients]);
             echo $this->Form->input('project_id', ['options' => $projects, 'empty' => true]);
             echo $this->Form->input('billable_time');
             echo $this->Form->input('notes');
-            echo $this->Form->input('when');
-            echo $this->Form->input('invoice_id', ['options' => $invoices, 'empty' => true]);
+            echo $this->Form->input('date_time');
           ?>
           </div>
           <!-- /.box-body -->
@@ -43,3 +42,24 @@
     </div>
   </div>
 </section>
+<script>
+$(document).ready(function() {
+	$('#client-id').change(function(){
+	    client_id = $(this).find(":selected").val();
+	    $.ajax({
+		type: "GET",
+		url: "/api/projects/list.json",
+		data: { 'filter_field' : 'client_id', 'filter_value' : client_id },
+		success: function(msg) {
+			$('#project-id').html('<option value=""></option>');
+			$.each(msg.data, function(key,value) {
+				$('#project-id').append($('<option></option>').attr("value", key).text(value));
+		});
+		},
+		error: function() {
+		    alert("Failed to load projects");
+		}
+	    });
+	});
+});   
+</script>

@@ -100,6 +100,69 @@ class ActivitiesController extends AppController
         $this->set('_serialize', ['activity']);
     }
 
+    public function batchAdd()
+    {
+
+        $activity = $this->Activities->newEntity();
+        if ($this->request->is('post')) {
+		$data=$this->request->data;
+		$error_log="";
+		if(is_array($data['user_id']))
+		{
+			foreach($data['user_id'] as $k=>$user_id)
+			{
+				if(!empty($data['project_id'][$k]))
+				try{
+					$project = $this->Activities->Projects->get($data['project_id'][$k]);
+					$client = $this->Activities->Clients->get($data['client_id'][$k]);
+					$rate = floatval($data['rate'][$k]);
+					if(empty($rate)||$rate==0)
+					if(!empty($project->rate))
+						$rate=$project->rate;
+					else
+						$rate=$client->default_rate;
+
+
+					$activity = $this->Activities->newEntity();
+					$activity->user_id=$user_id;
+					$activity->client_id=$data['client_id'][$k];
+					$activity->project_id=$data['project_id'][$k];
+					$activity->billable_time=$data['billable_time'][$k];
+					$activity->rate=$rate;
+					$activity->notes=$data['notes'][$k];
+					$activity->date_time=$data['date_time'][$k]['year']."-".$data['date_time'][$k]['month']."-".$data['date_time'][$k]['day']." 00:00:00";
+
+					if (!$this->Activities->save($activity)) {
+						$error_log.="Error processing entry : ".print_r($activity,true)."\n";
+					}
+				}catch(\Exception $e){
+					
+					$error_log.="General error at index $k : ".print_r($e,true)."\n";
+				}
+
+
+			}	
+
+		}
+
+		if ($error_log=="") {
+			$this->Flash->success(__('The activity has been saved.'));
+
+		} else {
+			$this->Flash->error('Error : '.$error_log);
+		}
+		return $this->redirect(['action' => 'index']);
+        } 
+
+
+        $user_id =  $this->Auth->user('id');
+        
+        $clients = $this->Activities->Clients->find('list', ['limit' => 200]);
+        $projects = $this->Activities->Projects->find('list', ['limit' => 200]);
+        $this->set(compact('activity', 'user_id', 'clients', 'projects'));
+        $this->set('_serialize', ['activity']);
+    }
+
     /**
      * Edit method
      *
@@ -124,7 +187,7 @@ class ActivitiesController extends AppController
         }
         $users = $this->Activities->Users->find('list', ['limit' => 200]);
         $clients = $this->Activities->Clients->find('list', ['limit' => 200]);
-        $projects = $this->Activities->Projects->find('list', ['limit' => 200]);
+        $projects = $this->Activities->Projects->find('list', ['limit' => 200])->where(['client_id'=>$activity->client_id]);
         $this->set(compact('activity', 'users', 'clients', 'projects'));
         $this->set('_serialize', ['activity']);
     }

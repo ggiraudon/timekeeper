@@ -25,13 +25,16 @@
         <?= $this->Form->create($client, array('role' => 'form')) ?>
           <div class="box-body">
           <?php
-            echo $this->Form->hidden('company_id',array('value'=>$company_id));
+            echo $this->Form->input('company_id', ['options' => $companies]);
             echo $this->Form->input('name');
             echo $this->Form->input('billing_address');
-            echo $this->Form->input('default_rate');
             echo $this->Form->input('phone');
             echo $this->Form->input('email');
+            echo $this->Form->input('default_rate');
+            echo $this->Form->input('tax_class_id', ['options' => $taxClasses, 'empty' => true]);
             echo $this->Form->input('currency');
+            echo $this->Form->input('username');
+            echo $this->Form->input('password');
           ?>
           </div>
           <!-- /.box-body -->

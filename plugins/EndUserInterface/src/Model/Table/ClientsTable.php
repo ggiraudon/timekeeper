@@ -70,6 +70,11 @@ class ClientsTable extends Table
             'foreignKey' => 'client_id',
             'className' => 'EndUserInterface.UserTimers'
         ]);
+        $this->hasMany('Tickets', [
+            'foreignKey' => 'client_id',
+            'className' => 'EndUserInterface.Tickets'
+        ]);
+ 
     }
 
     /**

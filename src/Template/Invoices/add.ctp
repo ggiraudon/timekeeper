@@ -68,12 +68,14 @@
 	    </table>
 	  </div>
 	  <div class="input"><label for="pretotal">Total (w/o tax)</label><input name="pretotal" id="pretotal" readonly></input></div>
-          <?php  echo $this->Form->input('discount'); ?>
+          <?php  echo $this->Form->input('discount',['value'=>'0.00']); ?>
 	  <div id="taxes">
 
 	  </div>
 
 	  <div class="input"><label for="total">Total</label><input name="total" id="total" readonly></input></div>
+          <?php  echo $this->Form->input('comments'); ?>
+
           <div class="box-footer">
             <?= $this->Form->button(__('Save')) ?>
           </div>

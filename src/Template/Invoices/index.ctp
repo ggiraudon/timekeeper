@@ -48,6 +48,7 @@
                 <td><?= h($invoice->status) ?></td>
                 <td class="actions" style="white-space:nowrap">
                   <?= $this->Html->link(__('View'), ['action' => 'view', $invoice->id], ['class'=>'btn btn-info btn-xs']) ?>
+                  <?= $this->Html->link(__('PDF'), ['action' => 'view', $invoice->id.".pdf"], ['class'=>'btn btn-info btn-xs']) ?>
                   <?= $this->Html->link(__('Edit'), ['action' => 'edit', $invoice->id], ['class'=>'btn btn-warning btn-xs']) ?>
                   <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $invoice->id], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs']) ?>
                 </td>

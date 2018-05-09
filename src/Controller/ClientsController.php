@@ -61,8 +61,8 @@ class ClientsController extends AppController
             }
         }
         $company_id =  $this->Auth->user('company_id');
-
-        $this->set(compact('client','company_id'));
+	$taxClasses = $this->Clients->TaxClasses->find('list');
+        $this->set(compact('client','company_id','taxClasses'));
         $this->set('_serialize', ['client','company_id']);
     }
 
@@ -88,7 +88,9 @@ class ClientsController extends AppController
                 $this->Flash->error(__('The client could not be saved. Please, try again.'));
             }
         }
+	$taxClasses = $this->Clients->TaxClasses->find('list');
         $this->set(compact('client'));
+        $this->set(compact('taxClasses'));
         $this->set('_serialize', ['client']);
     }
 

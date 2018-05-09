@@ -1,3 +1,5 @@
+/* Activity and Timer Functions */
+
 function addActivity(user_id,client_id,project_id,billable_time,notes,callback)
 {
 

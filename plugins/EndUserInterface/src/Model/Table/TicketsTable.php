@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Table;
+namespace EndUserInterface\Model\Table;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -10,17 +10,20 @@ use Cake\Validation\Validator;
  * Tickets Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Companies
+ * @property \Cake\ORM\Association\BelongsTo $Clients
+ * @property \Cake\ORM\Association\BelongsTo $Projects
  * @property \Cake\ORM\Association\BelongsTo $Users
+ * @property \Cake\ORM\Association\HasMany $Activities
  * @property \Cake\ORM\Association\HasMany $TicketAttachments
  * @property \Cake\ORM\Association\HasMany $TicketNotes
  *
- * @method \App\Model\Entity\Ticket get($primaryKey, $options = [])
- * @method \App\Model\Entity\Ticket newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Ticket[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Ticket|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Ticket patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Ticket[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Ticket findOrCreate($search, callable $callback = null, $options = [])
+ * @method \EndUserInterface\Model\Entity\Ticket get($primaryKey, $options = [])
+ * @method \EndUserInterface\Model\Entity\Ticket newEntity($data = null, array $options = [])
+ * @method \EndUserInterface\Model\Entity\Ticket[] newEntities(array $data, array $options = [])
+ * @method \EndUserInterface\Model\Entity\Ticket|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \EndUserInterface\Model\Entity\Ticket patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \EndUserInterface\Model\Entity\Ticket[] patchEntities($entities, array $data, array $options = [])
+ * @method \EndUserInterface\Model\Entity\Ticket findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
@@ -45,32 +48,33 @@ class TicketsTable extends Table
 
         $this->belongsTo('Companies', [
             'foreignKey' => 'company_id',
-            'joinType' => 'INNER'
+            'joinType' => 'INNER',
+            'className' => 'EndUserInterface.Companies'
         ]);
         $this->belongsTo('Clients', [
             'foreignKey' => 'client_id',
-            'joinType' => 'INNER'
+            'className' => 'EndUserInterface.Clients'
         ]);
         $this->belongsTo('Projects', [
             'foreignKey' => 'project_id',
-            'joinType' => 'INNER'
+            'className' => 'EndUserInterface.Projects'
         ]);
-
         $this->belongsTo('Users', [
-            'foreignKey' => 'user_id'
-        ]);
-        $this->hasMany('TicketAttachments', [
-            'foreignKey' => 'ticket_id'
-        ]);
-        $this->hasMany('TicketNotes', [
-            'foreignKey' => 'ticket_id',
-	    'sort' => 'TicketNotes.created DESC'
+            'foreignKey' => 'user_id',
+            'className' => 'EndUserInterface.Users'
         ]);
         $this->hasMany('Activities', [
             'foreignKey' => 'ticket_id',
-	    'sort' => 'Activities.created DESC'
+            'className' => 'EndUserInterface.Activities'
         ]);
- 
+        $this->hasMany('TicketAttachments', [
+            'foreignKey' => 'ticket_id',
+            'className' => 'EndUserInterface.TicketAttachments'
+        ]);
+        $this->hasMany('TicketNotes', [
+            'foreignKey' => 'ticket_id',
+            'className' => 'EndUserInterface.TicketNotes'
+        ]);
     }
 
     /**
@@ -119,6 +123,8 @@ class TicketsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['company_id'], 'Companies'));
+        $rules->add($rules->existsIn(['client_id'], 'Clients'));
+        $rules->add($rules->existsIn(['project_id'], 'Projects'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;

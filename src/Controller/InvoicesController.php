@@ -48,7 +48,8 @@ class InvoicesController extends AppController
             'contain' => ['Clients', 'Activities' => ['Projects']]
         ]);
 	$company = $this->Auth->user('company');
-	$pdf_filename  = "invoice-".$invoice->label.".pdf";
+	$client_name=str_replace(" ","_",$invoice->client->name);
+	$pdf_filename  = "invoice-$client_name-".$invoice->label.".pdf";
 	Configure::write('CakePdf.filename',$pdf_filename);
         $this->set('invoice', $invoice);
         $this->set('company', $company);
@@ -85,6 +86,7 @@ class InvoicesController extends AppController
 		$company_update=$this->Companies->get($company['id']);
 		$company_update->next_invoice_number++;
 		$this->Companies->save($company_update);
+		$this->request->getSession()->write('Auth.User.company',$company_update->toArray());
                 $this->Flash->success(__('The invoice has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -108,11 +110,18 @@ class InvoicesController extends AppController
     public function edit($id = null)
     {
         $invoice = $this->Invoices->get($id, [
-            'contain' => []
+            'contain' => ['Activities']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $invoice = $this->Invoices->patchEntity($invoice, $this->request->data);
             if ($this->Invoices->save($invoice)) {
+		$this->Invoices->Activities->updateAll(['invoice_id'=>null],['invoice_id'=>$invoice->id]);
+		foreach($this->request->data['activities'] as $activity_id)
+		{
+			$activity=$this->Invoices->Activities->get($activity_id);
+			$activity->invoice_id=$invoice->id;
+			$this->Invoices->Activities->save($activity);
+		}
                 $this->Flash->success(__('The invoice has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -120,8 +129,9 @@ class InvoicesController extends AppController
                 $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
             }
         }
-        $clients = $this->Invoices->Clients->find('list', ['limit' => 200]);
-        $this->set(compact('invoice', 'clients'));
+        $clients = $this->Invoices->Clients->find('all');
+	$taxClasses = $this->Invoices->Clients->TaxClasses->find('all',['contain' => ['TaxClassRates']]);
+        $this->set(compact('invoice', 'clients','taxClasses'));
         $this->set('_serialize', ['invoice']);
     }
 

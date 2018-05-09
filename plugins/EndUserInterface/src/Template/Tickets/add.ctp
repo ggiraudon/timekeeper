@@ -1,12 +1,7 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
 <section class="content-header">
   <h1>
-    Client
-    <small><?= __('Edit') ?></small>
+    Ticket
+    <small><?= __('Add') ?></small>
   </h1>
   <ol class="breadcrumb">
     <li>
@@ -27,19 +22,18 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <?= $this->Form->create($client, array('role' => 'form')) ?>
+        <?= $this->Form->create($ticket, array('role' => 'form')) ?>
           <div class="box-body">
           <?php
-            echo $this->Form->hidden('company_id');
-            echo $this->Form->input('name');
-            echo $this->Form->input('billing_address');
-            echo $this->Form->input('phone');
-            echo $this->Form->input('email');
-            echo $this->Form->input('default_rate');
-            echo $this->Form->input('tax_class_id', ['options' => $taxClasses, 'empty' => true]);
-            echo $this->Form->input('currency');
-            echo $this->Form->input('username');
-            echo $this->Form->input('password');
+            echo $this->Form->input('company_id', ['options' => $companies]);
+            echo $this->Form->input('client_id', ['options' => $clients, 'empty' => true]);
+            echo $this->Form->input('project_id', ['options' => $projects, 'empty' => true]);
+            echo $this->Form->input('ticket_number');
+            echo $this->Form->input('ticket_date');
+            echo $this->Form->input('from_email');
+            echo $this->Form->input('ticket_title');
+            echo $this->Form->input('status');
+            echo $this->Form->input('user_id', ['options' => $users, 'empty' => true]);
           ?>
           </div>
           <!-- /.box-body -->

@@ -34,6 +34,7 @@ if (file_exists($file)) {
             <li><a href="<?php echo $this->Url->build('/activities?filter=uninvoiced'); ?>"><i class="fa fa-circle-o"></i>Not Invoiced</a></li>
             <li><a href="<?php echo $this->Url->build('/activities?filter=invoiced'); ?>"><i class="fa fa-circle-o"></i>Invoiced</a></li>
             <li><a href="<?php echo $this->Url->build('/activities/add'); ?>"><i class="fa fa-circle-o"></i>New</a></li>
+            <li><a href="<?php echo $this->Url->build('/activities/batchAdd'); ?>"><i class="fa fa-circle-o"></i>Batch</a></li>
         </ul>
     </li>
     <li class="treeview">
