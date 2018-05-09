@@ -25,7 +25,7 @@
         <?= $this->Form->create($client, array('role' => 'form')) ?>
           <div class="box-body">
           <?php
-            echo $this->Form->hidden('company_id', ['value'=>$_user['company_id']]);
+            echo $this->Form->hidden('company_id', ['value'=>$_user['User']['company_id']]);
             echo $this->Form->input('name');
             echo $this->Form->input('billing_address');
             echo $this->Form->input('phone');
