@@ -135,6 +135,21 @@ class InvoicesController extends AppController
         $this->set('_serialize', ['invoice']);
     }
 
+
+    public function pay($id = null)
+    {
+        $invoice = $this->Invoices->get($id);
+	$invoice->status='PAID';
+        if ($this->Invoices->save($invoice)) {
+            $this->Flash->success(__('The invoice has been marked as paid.'));
+        } else {
+            $this->Flash->error(__('The invoice could not be marked as paid. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
+
     /**
      * Delete method
      *
