@@ -20,7 +20,9 @@ class TicketsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Companies', 'Users']
+            'contain' => ['Companies', 'Users'],
+	    'conditions' => ["Tickets.status != 'CLOSED'"],
+	    'order' => ["Tickets.ticket_number" => "ASC"]
         ];
         $tickets = $this->paginate($this->Tickets);
 
@@ -76,16 +78,27 @@ class TicketsController extends AppController
 
     public function addTime()
     {
-        $activity = $this->Tickets->Activities->newEntity();
+	$activity = $this->Tickets->Activities->newEntity();
         if ($this->request->is('post')||$this->request->is('put')) {
-            $activity = $this->Tickets->Activities->patchEntity($activity, $this->request->data);
-            if ($this->Tickets->Activities->save($activity)) {
-                $this->Flash->success(__('The {0} has been saved.', 'Activity'));
-                return $this->redirect(['action' => 'view',$activity->ticket_id]);
-            } else {
-                $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Activity'));
-                return $this->redirect(['action' => 'view',$activity->ticket_id]);
-            }
+
+		$project = $this->Tickets->Activities->Projects->get($this->request->data['project_id']);
+		$client = $this->Tickets->Activities->Clients->get($this->request->data['client_id']);
+
+		if(empty($this->request->data['rate']))
+			if(!empty($project->rate))
+				$this->request->data['rate']=$project->rate;
+			else
+				$this->request->data['rate']=$client->default_rate;
+
+
+		$activity = $this->Tickets->Activities->patchEntity($activity, $this->request->data);
+		if ($this->Tickets->Activities->save($activity)) {
+			$this->Flash->success(__('The {0} has been saved.', 'Activity'));
+			return $this->redirect(['action' => 'view',$activity->ticket_id]);
+		} else {
+			$this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Activity'));
+			return $this->redirect(['action' => 'view',$activity->ticket_id]);
+		}
         }
         return $this->redirect(['action' => 'view',$activity->ticket_id]);
     }
@@ -145,7 +158,10 @@ class TicketsController extends AppController
             $ticket = $this->Tickets->patchEntity($ticket, $this->request->data);
             if ($this->Tickets->save($ticket)) {
                 $this->Flash->success(__('The {0} has been saved.', 'Ticket'));
-                return $this->redirect(['action' => 'view',$ticket->id]);
+		if($ticket->status == "CLOSED")
+                	return $this->redirect(['action' => 'index']);
+		else
+                	return $this->redirect(['action' => 'view',$ticket->id]);
             } else {
                 $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Ticket'));
             }

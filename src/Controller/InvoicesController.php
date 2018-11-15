@@ -113,6 +113,7 @@ class InvoicesController extends AppController
             'contain' => ['Activities']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+	    $this->request->data['tax']=json_encode($this->request->data['tax']);
             $invoice = $this->Invoices->patchEntity($invoice, $this->request->data);
             if ($this->Invoices->save($invoice)) {
 		$this->Invoices->Activities->updateAll(['invoice_id'=>null],['invoice_id'=>$invoice->id]);

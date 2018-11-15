@@ -96,6 +96,7 @@
                     echo $this->Form->hidden('project_id', ['value' => $ticket->project_id]);
                     echo $this->Form->hidden('ticket_id', ['value' => $ticket->id]);
                     echo $this->Form->input('billable_time', ['required'=>true]);
+                    echo $this->Form->input('date_time', ['required'=>true,'value'=>date("Y-m-d H:i:s",strtotime($ticket->ticket_date))]);
                     echo $this->Form->input('rate', ['label'=>'rate (optional','empty' => true]);
                     echo $this->Form->input('notes', ['required'=>true]);
                   ?>

@@ -61,14 +61,14 @@ $nf = new \NumberFormatter( null, \NumberFormatter::CURRENCY);
 		    <?php foreach ($invoice->activities as $activities): ?>
 			<tr>
 								
-			    <td>
+			    <td nowrap>
 			    <?= date("Y-m-d",strtotime($activities->date_time)) ?>
 			    </td>
 			    <td>
 			    <?= h($activities->project->name) ?>
 			    </td>
 			    <td>
-			    <?= h($activities->notes) ?>
+			    <?= wordwrap(h($activities->notes),90,"<br/>") ?>
 			    </td>
 			    <td>
 			    <?= h($activities->billable_time) ?>
