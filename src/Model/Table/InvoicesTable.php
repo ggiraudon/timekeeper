@@ -42,7 +42,8 @@ class InvoicesTable extends Table
             'joinType' => 'INNER'
         ]);
         $this->hasMany('Activities', [
-            'foreignKey' => 'invoice_id'
+            'foreignKey' => 'invoice_id',
+	    'sort' => 'date_time'
         ]);
     }
 

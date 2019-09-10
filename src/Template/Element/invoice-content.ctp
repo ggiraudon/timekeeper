@@ -7,7 +7,12 @@ $nf = new \NumberFormatter( null, \NumberFormatter::CURRENCY);
         <div class="row">
             <div class="col-xs-12">
           <h2 class="page-header">
-            <i class="fa fa-globe"></i> <?= $company['name']?>
+		<?php if(empty($company['base64logo'])) { ?>
+            <i class="fa fa-globe"></i>
+		<?php }else{ ?>
+	    <img src="<?=$company['base64logo']?>" height=50>
+		<?php } ?>
+	    <?= $company['name']?>
             <small class="pull-right">Date: <?= $invoice['invoice_date']?></small>
           </h2>
             </div>

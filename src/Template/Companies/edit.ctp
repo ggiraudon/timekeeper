@@ -48,6 +48,7 @@
             echo $this->Form->input('smtp_port');
             echo $this->Form->input('mail_username');
             echo $this->Form->input('mail_password',['type'=>'password']);
+            echo $this->Form->input('base64logo');
           ?>
           </div>
           <!-- /.box-body -->

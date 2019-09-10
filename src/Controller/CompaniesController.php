@@ -28,7 +28,7 @@ class CompaniesController extends AppController
             $company = $this->Companies->patchEntity($company, $this->request->data);
             if ($this->Companies->save($company)) {
                 $this->Flash->success(__('The {0} has been saved.', 'Company'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'edit',$company->id]);
             } else {
                 $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Company'));
             }
