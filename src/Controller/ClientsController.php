@@ -37,7 +37,6 @@ class ClientsController extends AppController
         $client = $this->Clients->get($id, [
             'contain' => ['Activities', 'Invoices', 'Projects']
         ]);
-
         $this->set('client', $client);
         $this->set('_serialize', ['client']);
     }

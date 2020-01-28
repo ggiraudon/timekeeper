@@ -89,7 +89,7 @@ class AppController extends Controller
         
 	$this->set('theme', Configure::read('Theme'));
 
-	$User=$this->request->Session()->read('Auth');
+	$User=$this->request->getSession()->read('Auth');
 	if(!empty($User["User"]))
 	{
 		$this->loadModel('UserTimers');

@@ -44,7 +44,7 @@ use Cake\Routing\Route\DashedRoute;
 Router::defaultRouteClass(DashedRoute::class);
 
 Router::prefix('api', function ($routes) {
-    $routes->extensions(['json', 'xml']);
+    $routes->setExtensions(['json', 'xml']);
     $routes->resources('Clients');
     $routes->resources('Projects');
     $routes->resources('Activities');
@@ -54,9 +54,11 @@ Router::prefix('api', function ($routes) {
     $routes->fallbacks('InflectedRoute');
 });
 
+
 Router::scope('/', function (RouteBuilder $routes) {
+
     $routes->addExtensions(['pdf']);
-    /**
+     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
@@ -87,8 +89,4 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);
 });
 
-/**
- * Load all plugin routes.  See the Plugin documentation on
- * how to customize the loading of plugin routes.
- */
-Plugin::routes();
+

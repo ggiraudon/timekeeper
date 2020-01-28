@@ -903,13 +903,13 @@
 
 <?php
 $this->Html->css([
-    'AdminLTE./plugins/datatables/dataTables.bootstrap',
+    '/plugins/datatables/dataTables.bootstrap',
   ],
   ['block' => 'css']);
 
 $this->Html->script([
-  'AdminLTE./plugins/datatables/jquery.dataTables.min',
-  'AdminLTE./plugins/datatables/dataTables.bootstrap.min',
+  '/plugins/datatables/jquery.dataTables.min',
+  '/plugins/datatables/dataTables.bootstrap.min',
 ],
 ['block' => 'script']);
 ?>

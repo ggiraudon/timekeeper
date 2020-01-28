@@ -25,7 +25,7 @@
 
     <?php echo $this->fetch('css'); ?>
     <!-- jQuery 2.1.4 -->
-    <?php echo $this->Html->script('AdminLTE./plugins/jQuery/jQuery-2.1.4.min'); ?>
+    <?php echo $this->Html->script('/plugins/jQuery/jQuery-2.1.4.min'); ?>
 
 	<?php echo $this->Html->script('TimeCircles'); ?>
 	<?php echo $this->Html->script('jquery-ui.min'); ?>
@@ -85,13 +85,13 @@
 
 
 <!-- Bootstrap 3.3.5 -->
-<?php echo $this->Html->script('AdminLTE./bootstrap/js/bootstrap'); ?>
+<?php echo $this->Html->script('/bootstrap/js/bootstrap'); ?>
 <!-- SlimScroll -->
-<?php echo $this->Html->script('AdminLTE./plugins/slimScroll/jquery.slimscroll.min'); ?>
+<?php echo $this->Html->script('/plugins/slimScroll/jquery.slimscroll.min'); ?>
 <!-- FastClick -->
-<?php echo $this->Html->script('AdminLTE./plugins/fastclick/fastclick'); ?>
+<?php echo $this->Html->script('/plugins/fastclick/fastclick'); ?>
 <!-- AdminLTE App -->
-<?php echo $this->Html->script('AdminLTE.AdminLTE.min'); ?>
+<?php echo $this->Html->script('/js/AdminLTE.min'); ?>
 <!-- AdminLTE for demo purposes -->
 <?php echo $this->fetch('script'); ?>
 <?php echo $this->fetch('scriptBotton'); ?>

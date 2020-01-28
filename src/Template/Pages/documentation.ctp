@@ -4,11 +4,11 @@
 <section id="introduction">
   <h2 class="page-header"><a href="#introduction">Introduction</a></h2>
   <p class="lead">
-    <b>AdminLTE</b> is a popular open source WebApp template for admin dashboards and control panels.
+    <b>/b> is a popular open source WebApp template for admin dashboards and control panels.
     It is a responsive HTML template that is based on the CSS framework Bootstrap 3.
     It utilizes all of the Bootstrap components in its design and re-styles many
     commonly used plugins to create a consistent design that can be used as a user
-    interface for backend applications. AdminLTE is based on a modular design, which
+    interface for backend applications. is based on a modular design, which
     allows it to be easily customized and built upon. This documentation will guide you through
     installing the template and exploring the various components that are bundled with the template.
   </p>
@@ -20,7 +20,7 @@
 <section id="download">
   <h2 class="page-header"><a href="#download">Download</a></h2>
   <p class="lead">
-    AdminLTE can be downloaded in two different versions, each appealing to different skill levels and use case.
+    can be downloaded in two different versions, each appealing to different skill levels and use case.
   </p>
   <div class="row">
     <div class="col-sm-6">
@@ -30,8 +30,8 @@
           <span class="label label-primary pull-right"><i class="fa fa-html5"></i></span>
         </div><!-- /.box-header -->
         <div class="box-body">
-          <p>Compiled and ready to use in production. Download this version if you don't want to customize AdminLTE's LESS files.</p>
-          <a href="http://almsaeedstudio.com/download/AdminLTE-dist" class="btn btn-primary"><i class="fa fa-download"></i> Download</a>
+          <p>Compiled and ready to use in production. Download this version if you don't want to customize s LESS files.</p>
+          <a href="http://almsaeedstudio.com/download/dist" class="btn btn-primary"><i class="fa fa-download"></i> Download</a>
         </div><!-- /.box-body -->
       </div><!-- /.box -->
     </div><!-- /.col -->
@@ -43,21 +43,21 @@
         </div><!-- /.box-header -->
         <div class="box-body">
           <p>All files including the compiled CSS. Download this version if you plan on customizing the template. <b>Requires a LESS compiler.</b></p>
-          <a href="http://almsaeedstudio.com/download/AdminLTE" class="btn btn-danger"><i class="fa fa-download"></i> Download</a>
+          <a href="http://almsaeedstudio.com/download/ class="btn btn-danger"><i class="fa fa-download"></i> Download</a>
         </div><!-- /.box-body -->
       </div><!-- /.box -->
     </div><!-- /.col -->
   </div><!-- /.row -->
   <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">File Hierarchy of the Source Code Package
 
-AdminLTE/
+
 ├── dist/
 │   ├── CSS/
 │   ├── JS
 │   ├── img
 ├── build/
 │   ├── less/
-│   │   ├── AdminLTE's Less files
+│   │   ├── s Less files
 │   └── Bootstrap-less/ (Only for reference. No modifications have been made)
 │       ├── mixins/
 │       ├── variables.less
@@ -71,7 +71,7 @@ AdminLTE/
 
 <section id="dependencies">
   <h2 class="page-header"><a href="#dependencies">Dependencies</a></h2>
-  <p class="lead">AdminLTE depends on two main frameworks.
+  <p class="lead">depends on two main frameworks.
     The downloadable package contains both of these libraries, so you don't have to manually download them.</p>
   <ul class="bring-up">
     <li><a href="http://getbootstrap.com" target="_blank">Bootstrap 3</a></li>
@@ -90,11 +90,11 @@ AdminLTE/
   </p>
 
   <ul>
-    <li><b>AdminLTE is based on <a href="http://getbootstrap.com/" target="_blank">Bootstrap 3</a>.</b> If you are unfamiliar with Bootstrap, visit their website and read through the documentation. All of Bootstrap components have been modified to fit the style of AdminLTE and provide a consistent look throughout the template. This way, we guarantee you will get the best of AdminLTE.</li>
+    <li><b>is based on <a href="http://getbootstrap.com/" target="_blank">Bootstrap 3</a>.</b> If you are unfamiliar with Bootstrap, visit their website and read through the documentation. All of Bootstrap components have been modified to fit the style of and provide a consistent look throughout the template. This way, we guarantee you will get the best of </li>
     <li><b>Go through the pages that are bundled with the theme.</b> Most of the template example pages contain quick tips on how to create or use a component which can be really helpful when you need to create something on the fly.</li>
-    <li><b>Documentation.</b> We are trying our best to make your experience with AdminLTE be smooth. One way to achieve that is to provide documentation and support. If you think that something is missing from the documentation, please do not hesitate to create an issue to tell us about it. Also, if you would like to contribute, email the support team at <a href="mailto:support@almsaeedstudio.com">support@almsaeedstudio.com</a>.</li>
+    <li><b>Documentation.</b> We are trying our best to make your experience with be smooth. One way to achieve that is to provide documentation and support. If you think that something is missing from the documentation, please do not hesitate to create an issue to tell us about it. Also, if you would like to contribute, email the support team at <a href="mailto:support@almsaeedstudio.com">support@almsaeedstudio.com</a>.</li>
     <li><b>Built with <a href="http://lesscss.org/" target="_blank">LESS</a>.</b> This theme uses the LESS compiler to make it easier to customize and use. LESS is easy to learn if you know CSS or SASS. It is not necessary to learn LESS but it will benefit you a lot in the future.</li>
-    <li><b>Hosted on <a href="https://github.com/almasaeed2010/AdminLTE/" target="_blank">GitHub</a>.</b> Visit our GitHub repository to view issues, make requests, or contribute to the project.</li>
+    <li><b>Hosted on <a href="https://github.com/almasaeed2010/" target="_blank">GitHub</a>.</b> Visit our GitHub repository to view issues, make requests, or contribute to the project.</li>
   </ul>
   <p>
     <b>Note:</b> LESS files are better commented than the compiled CSS file.
@@ -119,7 +119,7 @@ AdminLTE/
   </div>
 
   <h3>Layout Options</h3>
-  <p class="lead">AdminLTE 2.0 provides a set of options to apply to your main layout. Each on of these classes can be added
+  <p class="lead">2.0 provides a set of options to apply to your main layout. Each on of these classes can be added
     to the body tag to get the desired goal.</p>
   <ul>
     <li><b>Fixed:</b> use the class <code>.fixed</code> to get a fixed header and sidebar.</li>
@@ -201,17 +201,17 @@ AdminLTE/
 <!-- ============================================================= -->
 
 <section id="adminlte-options">
-  <h2 class="page-header"><a href="#adminlte-options">AdminLTE Javascript Options</a></h2>
-  <p class="lead">Modifying the options of AdminLTE's app.js can be done using one of the following ways.</p>
+  <h2 class="page-header"><a href="#adminlte-options">Javascript Options</a></h2>
+  <p class="lead">Modifying the options of s app.js can be done using one of the following ways.</p>
 
   <h3>Editing app.js</h3>
-  <p>Within the main Javascript file, modify the <code>$.AdminLTE.options</code> object to suit your use case.</p>
+  <p>Within the main Javascript file, modify the <code>$.options</code> object to suit your use case.</p>
 
-  <h3>Defining AdminLTEOptions</h3>
-  <p>Alternatively, you can define a global options variable named <code>AdminLTEOptions</code> and initialize it before loading app.js.</p>
+  <h3>Defining ptions</h3>
+  <p>Alternatively, you can define a global options variable named <code>ptions</code> and initialize it before loading app.js.</p>
   <p>Example</p>
   <pre class="prettyprint"><code class="html">&LT;script>
-  var AdminLTEOptions = {
+  var ptions = {
     //Enable sidebar expand on hover effect for sidebar mini
     //This option is forced to true if both the fixed layout and sidebar mini
     //are used together
@@ -224,7 +224,7 @@ AdminLTE/
 &LT;/script>
 &LT;script src="dist/js/app.js" type="text/javascript">&LT;/script></code></pre>
 
-  <h3>Available AdminLTE Options</h3>
+  <h3>Available Options</h3>
   <pre class="prettyprint"><code class="javascript">{
   //Add slimscroll to navbar menus
   //This requires you to load the slimscroll plugin
@@ -254,7 +254,7 @@ AdminLTE/
   //Enable Fast Click. Fastclick.js creates a more
   //native touch experience with touch devices. If you
   //choose to enable the plugin, make sure you load the script
-  //before AdminLTE's app.js
+  //before s app.js
   enableFastclick: true,
   //Control Sidebar Options
   enableControlSidebar: true,
@@ -332,7 +332,7 @@ AdminLTE/
   <div class="callout callout-info lead">
     <h4>Reminder!</h4>
     <p>
-      AdminLTE uses all of Bootstrap 3 components. It's a good start to review
+      uses all of Bootstrap 3 components. It's a good start to review
       the <a href="http://getbootstrap.com">Bootstrap documentation</a> to get an idea of the various components
       that this documentation <b>does not</b> cover.
     </p>
@@ -1143,8 +1143,8 @@ AdminLTE/
 &LT;div class="box box-solid box-danger">...&LT;/div></pre>
   <h4>Box Tools</h4>
   <p class="lead">Boxes can contain tools to deploy a specific event or provide simple info. The following examples makes use
-    of multiple AdminLTE components within the header of the box.</p>
-  <p>AdminLTE data-widget attribute provides boxes with the ability to collapse or be removed. The buttons
+    of multiple components within the header of the box.</p>
+  <p>data-widget attribute provides boxes with the ability to collapse or be removed. The buttons
     are placed in the box-tools which is placed in the box-header.</p>
   <pre class="prettyprint">
 &LT;!-- This will cause the box to be removed when clicked -->
@@ -1890,7 +1890,7 @@ AdminLTE/
 
 <section id="plugins">
   <h2 class="page-header"><a href="#plugins">Plugins</a></h2>
-  <p class="lead">AdminLTE makes use of the following plugins. For documentation, updates or license information, please visit the provided links.</p>
+  <p class="lead">makes use of the following plugins. For documentation, updates or license information, please visit the provided links.</p>
   <div class="row bring-up">
     <div class="col-sm-3">
       <ul class="list-unstyled">
@@ -1941,7 +1941,7 @@ AdminLTE/
 
 <section id="browsers">
   <h2 class="page-header"><a href="#browsers">Browser Support</a></h2>
-  <p class="lead">AdminLTE supports the following browsers:</p>
+  <p class="lead">supports the following browsers:</p>
   <ul>
     <li>IE9+</li>
     <li>Firefox (latest)</li>
@@ -1959,8 +1959,8 @@ AdminLTE/
   <h2 class="page-header"><a href="#upgrade">Upgrade Guide</a></h2>
   <p class="lead">To upgrade from version 1.x to the lateset version, follow this guide.</p>
   <h3>New Files</h3>
-  <p>Make sure you update all CSS and JS files that are related to AdminLTE. Otherwise, the layout will not
-    function properly. Most important files are AdminLTE.css, skins CSS files, and app.js.</p>
+  <p>Make sure you update all CSS and JS files that are related to  Otherwise, the layout will not
+    function properly. Most important files are css, skins CSS files, and app.js.</p>
   <h3>Layout Changes</h3>
   <ol>
     <li>The .wrapper div must be placed immediately after the body tag rather than after the header</li>
@@ -1987,20 +1987,20 @@ AdminLTE/
 
 <section id="implementations">
   <h2 class="page-header"><a href="#implementations">Implementations</a></h2>
-  <p class="lead">Thanks to many of AdminLTE users, there are multiple implementations of the template
+  <p class="lead">Thanks to many of users, there are multiple implementations of the template
   for easy integration with back-end frameworks. The following are some of them:</p>
 
   <ul>
-    <li><a href="https://github.com/mmdsharifi/AdminLTE-RTL">Persian RTL</a> by <a href="https://github.com/mmdsharifi">Mohammad Sharifi</a></li>
+    <li><a href="https://github.com/mmdsharifi/RTL">Persian RTL</a> by <a href="https://github.com/mmdsharifi">Mohammad Sharifi</a></li>
     <li><a href="https://github.com/dmstr/yii2-adminlte-asset" target="_blank">Yii 2</a> by <a href="https://github.com/schmunk42" target="_blank">Tobias Munk</a></li>
     <li><a href="https://github.com/yajra/laravel-admin-template" target="_blank">Laravel</a> by <a href="https://github.com/yajra" target="_blank">Arjay Angeles</a></li>
     <li><a href="https://github.com/avanzu/AdminThemeBundle" target="_blank">Symfony</a> by <a href="https://github.com/avanzu" target="_blank">Marc Bach</a></li>
-    <li>Rails gems: <a href="https://github.com/nicolas-besnard/adminlte2-rails" target="_blank">adminlte2-rails</a> by <a href="https://github.com/nicolas-besnard" target="_blank">Nicolas Besnard</a> and <a href="https://github.com/racketlogger/lte-rails" target="_blank">lte-rails</a> (using AdminLTE sources) by <a href="https://github.com/racketlogger" target="_blank">Carlos at RacketLogger</a></li>
+    <li>Rails gems: <a href="https://github.com/nicolas-besnard/adminlte2-rails" target="_blank">adminlte2-rails</a> by <a href="https://github.com/nicolas-besnard" target="_blank">Nicolas Besnard</a> and <a href="https://github.com/racketlogger/lte-rails" target="_blank">lte-rails</a> (using sources) by <a href="https://github.com/racketlogger" target="_blank">Carlos at RacketLogger</a></li>
   </ul>
 
   <p><b class="text-red">Note:</b> these implementations are not supported by Almsaeed Studio. However,
-    they do provide a good example of how to integrate AdminLTE into different frameworks. For the latest release
-    of AdminLTE, please visit our <a href="https://github.com/almasaeed2010/AdminLTE">repository</a> or <a href="https://almsaeedstudio.com">website</a></p>
+    they do provide a good example of how to integrate into different frameworks. For the latest release
+    of  please visit our <a href="https://github.com/almasaeed2010/>repository</a> or <a href="https://almsaeedstudio.com">website</a></p>
 </section>
 
 
@@ -2008,15 +2008,15 @@ AdminLTE/
 
 <section id="faq">
   <h2 class="page-header"><a href="#faq">FAQ</a></h2>
-  <h3>Can AdminLTE be used with Wordpress?</h3>
-  <p class="lead">AdminLTE is an HTML template that can be used for any purpose. However, it is not made to be easily installed on Wordpress. It will require some effort and enough knowledge of the Wordpress script to do so.</p>
+  <h3>Can be used with Wordpress?</h3>
+  <p class="lead">is an HTML template that can be used for any purpose. However, it is not made to be easily installed on Wordpress. It will require some effort and enough knowledge of the Wordpress script to do so.</p>
 
   <h3>Is there an integration guide for PHP frameworks such as Yii or Symfony?</h3>
-  <p class="lead">Short answer, no. However, there are forks and tutorials around the web that provide info on how to integrate with many different frameworks. There are even versions of AdminLTE that are integrated with jQuery ajax, AngularJS and/or MVC5 ASP .NET.</p>
+  <p class="lead">Short answer, no. However, there are forks and tutorials around the web that provide info on how to integrate with many different frameworks. There are even versions of that are integrated with jQuery ajax, AngularJS and/or MVC5 ASP .NET.</p>
 
-  <h3>How do I get notified of new AdminLTE versions?</h3>
+  <h3>How do I get notified of new versions?</h3>
   <p class="lead">The best option is to subscribe to our mailing list using the <a href="http://almsaeedstudio.com/#subscribe">subscription form on Almsaeed Studio</a>.
-    If that's not appealing to you, you may watch the <a href="https://github.com/almasaeed2010/AdminLTE">repository on Github</a> or visit <a href="http://almsaeedstudio.com">Almsaeed Studio</a> every now and then for updates and announcements.</p>
+    If that's not appealing to you, you may watch the <a href="https://github.com/almasaeed2010/>repository on Github</a> or visit <a href="http://almsaeedstudio.com">Almsaeed Studio</a> every now and then for updates and announcements.</p>
 </section>
 
 
@@ -2024,9 +2024,9 @@ AdminLTE/
 
 <section id="license">
   <h2 class="page-header"><a href="#license">License</a></h2>
-  <h3>AdminLTE</h3>
+  <h3>/h3>
   <p class="lead">
-    AdminLTE is an open source project that is licensed under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.
+    is an open source project that is licensed under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.
     This allows you to do pretty much anything you want as long as you include
     the copyright in "all copies or substantial portions of the Software."
     Attribution is not required (though very much appreciated).

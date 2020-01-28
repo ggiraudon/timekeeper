@@ -1,4 +1,4 @@
-<?php $this->layout = 'AdminLTE.print'; ?>
+<?php $this->layout = 'print'; ?>
 <style>
 @media print 
 {

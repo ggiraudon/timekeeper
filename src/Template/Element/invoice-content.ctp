@@ -105,7 +105,7 @@ $nf = new \NumberFormatter( null, \NumberFormatter::CURRENCY);
             <?php echo $this->Html->image('credit/american-express.png', array('fullBase' => true,'alt' => 'American Express')); ?>
             <?php echo $this->Html->image('credit/paypal2.png', array('fullBase' => true,'alt' => 'Paypal')); ?>
 
-            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px; min-height:100px;">
             <?= $invoice['comments']?>
             </p>
         </div>
